@@ -1,0 +1,316 @@
+.admin-body {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	min-height: 0;
+}
+
+.sidebar {
+	width: 240px;
+	height: 100%;
+	border-right: 1px solid var(--border-color);
+	background-color: var(--bg-color);
+	display: flex;
+	flex-direction: column;
+	transition: transform 0.5s ease;
+}
+
+.sidebar .side-navigation,
+.sidebar .side-menu {
+	padding: 20px 24px;
+	flex-shrink: 0;
+}
+
+.sidebar .side-navigation {
+	flex: 1;
+}
+
+.sidebar .side-menu {
+	border-top: 1px solid var(--border-color);
+}
+
+.sidebar .side-navigation li a,
+.sidebar .side-menu li {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	padding: 12px 0;
+	cursor: pointer;
+	border-radius: 5px;
+	color: var(--sec-text-color) !important;
+	gap: 12px;
+	transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+.sidebar .side-navigation li a {
+	color: var(--sec-text-color) !important;
+}
+
+.sidebar .side-navigation li a:hover,
+.sidebar .side-menu li:hover {
+	background-color: rgba(101, 87, 87, 0.05);
+	padding-left: 10px;
+	color: var(--bg-button-color) !important;
+}
+
+@media (max-width: 768px) {
+	.sidebar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		transform: translateX(-100%);
+	}
+
+	.sidebar.open {
+		transform: translateX(0);
+	}
+}
+
+.admin-body main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	overflow-y: auto;
+}
+
+.admin-body .header-page,
+.admin-body .header-form {
+	width: 100%;
+	height: 70px;
+	border-bottom: 1px solid var(--border-color);
+	background-color: var(--bg-color);
+	flex-shrink: 0;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 20px 50px;
+	justify-content: space-between;
+}
+
+.admin-body .header-form {
+	padding: 20px;
+	border-radius: 10px;
+	justify-content: left;
+	gap: 12px;
+	border: 1px solid var(--border-color);
+}
+.admin-body .header-form .icon {
+	margin-top: 5px;
+}
+
+.admin-body .header-page h1 {
+	color: var(--bg-button-color);
+	font-size: 26px;
+	font-weight: bold;
+	margin: 0;
+}
+
+.admin-body .header-form h3 {
+	color: var(--text-color);
+	font-size: 17px;
+	margin: 0;
+	font-weight: 500;
+}
+.admin-body .header-form .icon {
+	color: var(--text-color);
+}
+
+.admin-body .header-page button {
+	font-size: 14px;
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	padding: 10px 15px;
+	transition: all 0.3s ease;
+}
+
+.admin-body .header-page .btn-primary {
+	background-color: var(--bg-button-color);
+	border: none;
+	color: white;
+	transition: all 0.3s ease;
+}
+
+.admin-body .header-page .btn-outline {
+	border: 1px solid var(--bg-button-color);
+	background-color: transparent;
+	color: var(--bg-button-color);
+	transition: all 0.3s ease;
+}
+
+.admin-body .header-page .btn-outline:hover {
+	background-color: var(--bg-button-color);
+	color: #ffffff;
+}
+
+.admin-body .content-page {
+	flex-shrink: 0;
+	margin: 20px 50px;
+}
+
+/* FORM */
+.admin-body.form,
+.admin-body.details {
+	flex-shrink: 0;
+	margin: 20px 200px;
+}
+
+.admin-body.form .content-form,
+.admin-body.details .content-details {
+	margin-top: 20px;
+	padding: 20px 50px;
+	background-color: var(--bg-color);
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+}
+
+.function-container {
+	gap: 15px;
+	display: flex;
+	justify-content: space-between;
+}
+.admin-body .form-control {
+	padding: 10px 15px;
+	background-color: var(--bg-text-field);
+	color: var(--text-color);
+	border-color: var(--border-color);
+}
+
+.admin-body .form-control::placeholder {
+	color: gray;
+	opacity: 1;
+}
+
+.admin-body .form-control,
+.admin-body .form-btn,
+.admin-body .form-menu {
+	font-size: 14px;
+}
+
+.admin-body .form-btn {
+	background-color: var(--bg-button-color);
+	border: none;
+	color: white;
+	transition: all 0.3s ease;
+	padding: 10px 15px;
+}
+
+.admin-body .form-btn:hover,
+.admin-body .header-page .btn-primary:hover {
+	background-color: #0e4885;
+}
+
+.admin-body .form-btn.btn-outline-primary {
+	border: 1px solid var(--border-color);
+	background-color: transparent;
+	color: var(--bg-button-color);
+	transition: all 0.3s ease;
+	padding: 10px 15px;
+}
+
+.admin-body .form-btn.btn-outline-primary:hover {
+	color: white;
+	background-color: var(--bg-button-color);
+}
+
+.admin-body .content-form .form-field {
+	width: 100%;
+}
+
+.admin-body .content-form label,
+.admin-body .content-details label {
+	font-size: 14px;
+	margin-bottom: 18px !important;
+	font-weight: 500;
+	color: var(--text-color);
+	line-height: 0;
+}
+
+.admin-body .form-image-container,
+.admin-body .details-gallery .details-image-container {
+	cursor: pointer !important;
+	flex: 0 0 auto;
+	height: 215px;
+	width: 250px;
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+}
+
+.admin-body .form-image-container img,
+.admin-body .details-image-container img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.content-form .form-group-buttons,
+.content-details .details-group-buttons {
+	display: flex;
+	gap: 15px;
+	align-self: last baseline;
+}
+
+.content-form .form-btn.btn-primary,
+.content-form .form-btn.btn-outline-primary,
+.content-details .form-btn.btn-primary,
+.content-details .form-btn.btn-outline-primary {
+	width: 100px;
+}
+
+@media (max-width: 1120px) {
+	.admin-body .header-page {
+		padding: 20px 24px;
+	}
+
+	.admin-body .content-page,
+	.admin-body.form,
+	.admin-body.details {
+		margin: 20px 24px;
+	}
+}
+
+@media (max-width: 770px) {
+	.admin-body .header-page {
+		flex-direction: column;
+		height: auto;
+		align-items: start;
+		gap: 15px;
+	}
+
+	.function-container {
+		flex-direction: column;
+	}
+
+	.admin-body.form .content-form,
+	.admin-body.details .content-details {
+		margin-top: 20px;
+		padding: 20px 24px;
+	}
+}
+
+@media (max-width: 500px) {
+	.form-image-container {
+		width: 100% !important;
+	}
+	.form-group.form-group-buttons {
+		width: 100%;
+	}
+	.content-form .form-btn.btn-primary,
+	.content-form .form-btn.btn-outline-primary,
+	.content-details .form-btn.btn-primary,
+	.content-details .form-btn.btn-outline-primary {
+		flex: 1;
+	}
+}
+
+@keyframes fadeSlideIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}

@@ -1,0 +1,91 @@
+/* HEADER */
+.modal-dialog .modal-header {
+	border-bottom: 1px solid var(--border-color);
+	padding: 0 0 15px 0;
+	gap: 15px;
+}
+
+.modal-dialog .modal-header .logo-container {
+	height: 25px;
+}
+
+.modal-dialog .modal-header h4 {
+	color: var(--text-color);
+	font-size: 15px;
+	margin: 0;
+	font-weight: 400;
+}
+
+.modal-dialog .modal-header p,
+.modal-dialog form .form-title p {
+	color: var(--sec-text-color);
+	font-size: 12px;
+	margin: 0;
+}
+
+/* BODY FORM */
+.modal-dialog form .form-title h3 {
+	color: var(--text-color);
+	font-size: 25px;
+	font-weight: bold;
+	margin: 0;
+	margin-bottom: 3px;
+}
+
+.modal-dialog form label {
+	font-size: 14px;
+	margin-bottom: 18px !important;
+	font-weight: 400;
+	color: var(--text-color);
+	line-height: 0;
+}
+
+.modal-dialog form a {
+	font-size: 14px;
+	font-weight: 400;
+	color: var(--bg-button-color);
+	text-align: right;
+}
+
+.modal-dialog form .form-control {
+	padding: 10px 15px;
+	background-color: var(--bg-text-field);
+	color: var(--text-color);
+	border-color: var(--border-color);
+}
+
+.modal-dialog form .form-control::placeholder {
+	color: gray;
+	opacity: 1;
+}
+
+.modal-dialog form .form-control,
+.modal-dialog form .form-btn,
+.modal-dialog form .form-menu {
+	font-size: 14px;
+}
+
+/* FOOTER */
+.modal-dialog .modal-footer {
+	padding: 0;
+	border: none;
+}
+
+.modal-dialog .modal-footer button {
+	font-size: 14px;
+	padding: 10px 15px;
+	width: 100%;
+	text-align: center;
+	transition: all 0.3s ease;
+	background-color: var(--bg-button-color);
+}
+
+.modal-dialog .modal-footer button:hover {
+	background-color: #0e4885;
+}
+
+@media (max-width: 800px) {
+	.modal-dialog {
+		width: auto;
+	}
+}
