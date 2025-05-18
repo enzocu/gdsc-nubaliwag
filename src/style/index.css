@@ -144,6 +144,7 @@ body {
 	align-self: center;
 	flex-grow: unset;
 }
+
 .navbar .navbar-nav {
 	gap: 30px;
 }
@@ -159,6 +160,11 @@ body {
 
 .navbar .navbar-nav .nav-item a.active {
 	color: var(--bg-button-color);
+}
+
+.navbar button .icon {
+	color: var(--text-color);
+	font-size: 30px;
 }
 
 @media (max-width: 705px) {

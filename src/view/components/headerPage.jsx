@@ -1,8 +1,12 @@
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/navlogo.png";
 import { IoIosMenu } from "react-icons/io";
-import { openModal } from "../../controller/customAction/showcloseModal";
+import {
+	openModal,
+	toggleNavbarCollapse,
+} from "../../controller/customAction/showcloseModal";
 import useTheme from "../../controller/customAction/useTheme";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function HeaderPage() {
 	const location = useLocation();
@@ -25,10 +29,9 @@ function HeaderPage() {
 						<button
 							className="navbar-toggler"
 							type="button"
-							data-bs-toggle="collapse"
-							data-bs-target="#collapsibleNavbar"
+							onClick={() => toggleNavbarCollapse("collapsibleNavbar")}
 						>
-							<IoIosMenu />
+							<IoIosMenu className="icon" />
 						</button>
 
 						<div className="collapse navbar-collapse" id="collapsibleNavbar">
@@ -79,9 +82,7 @@ function HeaderPage() {
 									</NavLink>
 								</li>
 								<li className="nav-item">
-									<a href="#" onClick={() => openModal("loginModal")}>
-										Login
-									</a>
+									<a onClick={() => openModal("loginModal")}>Login</a>
 								</li>
 							</ul>
 						</div>

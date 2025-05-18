@@ -34,3 +34,15 @@ export function toggleDropdown(id) {
 
 	dropdownInstance.toggle();
 }
+
+export function toggleNavbarCollapse(id) {
+	const collapseEl = document.getElementById(id);
+	if (!collapseEl) return;
+
+	let collapseInstance = bootstrap.Collapse.getInstance(collapseEl);
+	if (!collapseInstance) {
+		collapseInstance = new bootstrap.Collapse(collapseEl, { toggle: false });
+	}
+
+	collapseInstance.toggle();
+}

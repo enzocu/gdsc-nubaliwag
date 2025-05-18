@@ -192,7 +192,9 @@ function EventsDetails() {
 								type="submit"
 								className="btn form-btn btn-outline-primary"
 								onClick={() =>
-									navigate(`/admin/events/eventsform?action=edit&id=${id}`)
+									navigate(
+										`/gdsc-nubaliwag/admin/events/eventsform?action=edit&id=${id}`
+									)
 								}
 							>
 								Edit
