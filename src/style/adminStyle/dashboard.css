@@ -194,6 +194,9 @@
 }
 
 @media (max-width: 900px) {
+	.content-page.dashboard .dashboard-stats {
+		height: 150px;
+	}
 	.content-page.dashboard .dashboard-stat.events,
 	.content-page.dashboard .dashboard-stat.members,
 	.content-page.dashboard .dashboard-stat.photos {

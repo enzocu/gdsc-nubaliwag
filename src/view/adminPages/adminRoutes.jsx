@@ -17,25 +17,40 @@ function AdminRoutes() {
 	return (
 		<Routes>
 			{/* Page */}
-			<Route path="/admin/dashboard" element={<DashboardPage />} />
-			<Route path="/admin/events" element={<EventsPage />} />
-			<Route path="/admin/members" element={<MembersPage />} />
+			<Route
+				path="/gdsc-nubaliwag/admin/dashboard"
+				element={<DashboardPage />}
+			/>
+			<Route path="/gdsc-nubaliwag/admin/events" element={<EventsPage />} />
+			<Route path="/gdsc-nubaliwag/admin/members" element={<MembersPage />} />
 
-			<Route path="/admin/photos" element={<PhotosPage />} />
+			<Route path="/gdsc-nubaliwag/admin/photos" element={<PhotosPage />} />
 
 			{/* Form */}
 			<Route
-				path="/admin/dashboard/dashboardform"
+				path="/gdsc-nubaliwag/admin/dashboard/dashboardform"
 				element={<DashboardForm />}
 			/>
-			<Route path="/admin/events/eventsform" element={<EventsForm />} />
-			<Route path="/admin/members/membersform" element={<MembersForm />} />
-			<Route path="/admin/photos/photosform" element={<PhotosForm />} />
+			<Route
+				path="/gdsc-nubaliwag/admin/events/eventsform"
+				element={<EventsForm />}
+			/>
+			<Route
+				path="/gdsc-nubaliwag/admin/members/membersform"
+				element={<MembersForm />}
+			/>
+			<Route
+				path="/gdsc-nubaliwag/admin/photos/photosform"
+				element={<PhotosForm />}
+			/>
 
 			{/* Details */}
-			<Route path="/admin/events/eventsdetails" element={<EventsDetails />} />
 			<Route
-				path="/admin/members/membersdetails"
+				path="/gdsc-nubaliwag/admin/events/eventsdetails"
+				element={<EventsDetails />}
+			/>
+			<Route
+				path="/gdsc-nubaliwag/admin/members/membersdetails"
 				element={<MembersDetails />}
 			/>
 		</Routes>

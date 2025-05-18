@@ -85,7 +85,7 @@
 	flex-direction: column;
 	gap: 15px;
 	border: 1px solid var(--border-color);
-	padding: 20px 24px;
+	padding: 20px;
 	border-radius: 10px;
 }
 

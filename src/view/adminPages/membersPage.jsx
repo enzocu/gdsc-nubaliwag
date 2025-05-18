@@ -97,7 +97,7 @@ function MembersPage() {
 								</div>
 							</div>
 
-							<NavLink to="/admin/members/membersform?action=add">
+							<NavLink to="/gdsc-nubaliwag/admin/members/membersform?action=add">
 								<button className="btn btn-primary form-btn">
 									<MdAdd />
 									<span>Add Core Member</span>
@@ -131,7 +131,7 @@ function MembersPage() {
 												key={item.id || index}
 												onClick={() =>
 													navigate(
-														`/admin/members/membersform?action=edit&id=${item.id}`
+														`/gdsc-nubaliwag/admin/members/membersform?action=edit&id=${item.id}`
 													)
 												}
 											>

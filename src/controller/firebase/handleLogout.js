@@ -5,7 +5,7 @@ export async function handleLogout({ navigate, triggerAlert }) {
 	try {
 		await signOut(auth);
 		triggerAlert("success", "You have been logged out successfully.");
-		navigate("/");
+		navigate("/gdsc-nubaliwag/");
 	} catch (error) {
 		triggerAlert("danger", `Logout failed: ${error.message}`);
 	}

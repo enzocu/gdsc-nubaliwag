@@ -148,7 +148,4 @@
 	.user-body main section:not(:first-of-type) {
 		padding-bottom: 20px;
 	}
-	.gdg-search-input {
-		width: 100%;
-	}
 }

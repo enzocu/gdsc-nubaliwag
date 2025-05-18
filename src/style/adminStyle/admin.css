@@ -23,6 +23,7 @@
 
 .sidebar .side-navigation {
 	flex: 1;
+	overflow-y: auto;
 }
 
 .sidebar .side-menu {
@@ -285,7 +286,7 @@
 	.admin-body.form .content-form,
 	.admin-body.details .content-details {
 		margin-top: 20px;
-		padding: 20px 24px;
+		padding: 20px;
 	}
 }
 

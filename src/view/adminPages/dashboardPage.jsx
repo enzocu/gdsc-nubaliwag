@@ -111,7 +111,7 @@ function DashboardPage() {
 										event.map((ev) => (
 											<NavLink
 												key={ev.id}
-												to={`/admin/events/eventsdetails?id=${ev.id}`}
+												to={`/gdsc-nubaliwag/admin/events/eventsdetails?id=${ev.id}`}
 											>
 												<div className="event-container">
 													<div className="event-details">
@@ -154,7 +154,7 @@ function DashboardPage() {
 									{member.length > 0 ? (
 										member.map((mem) => (
 											<NavLink
-												to={`/admin/members/membersform?action=edit&id=${mem.id}`}
+												to={`/gdsc-nubaliwag/admin/members/membersform?action=edit&id=${mem.id}`}
 												key={mem.id}
 											>
 												<div className="member-container">

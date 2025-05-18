@@ -96,7 +96,7 @@ function PhotosPage() {
 								</div>
 							</div>
 
-							<NavLink to="/admin/photos/photosform?action=add">
+							<NavLink to="/gdsc-nubaliwag/admin/photos/photosform?action=add">
 								<button className="btn btn-primary form-btn">
 									<MdAdd />
 									<span>Add Photo</span>
@@ -110,7 +110,7 @@ function PhotosPage() {
 								photo.map((ph) => (
 									<NavLink
 										key={ph.id}
-										to={`/admin/photos/photosform?action=edit&id=${ph.id}`}
+										to={`/gdsc-nubaliwag/admin/photos/photosform?action=edit&id=${ph.id}`}
 									>
 										<div className="photos-card">
 											<div className="photos-photo">

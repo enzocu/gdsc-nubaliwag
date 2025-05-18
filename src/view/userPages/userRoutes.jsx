@@ -10,11 +10,11 @@ import "../../style/userStyle/user.css";
 function UserRoutes() {
 	return (
 		<Routes>
-			<Route path="/" element={<HomePage />} />
-			<Route path="/user/events" element={<EventsPage />} />
-			<Route path="/user/coreteam" element={<MembersPage />} />
-			<Route path="/user/projects" element={<ProjectsPage />} />
-			<Route path="/user/contact" element={<ContactPage />} />
+			<Route path="/gdsc-nubaliwag/" element={<HomePage />} />
+			<Route path="/gdsc-nubaliwag/user/events" element={<EventsPage />} />
+			<Route path="/gdsc-nubaliwag/user/coreteam" element={<MembersPage />} />
+			<Route path="/gdsc-nubaliwag/user/projects" element={<ProjectsPage />} />
+			<Route path="/gdsc-nubaliwag/user/contact" element={<ContactPage />} />
 		</Routes>
 	);
 }

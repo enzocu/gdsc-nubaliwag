@@ -1,20 +1,26 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { auth, db } from "../../server/firebaseConfig";
-import { onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { useNavigate, useLocation } from "react-router-dom";
+
 import Lottie from "lottie-react";
 import authAnimation from "../../assets/authLoading.json";
 import { useAlert } from "./alertProvider";
 
+import { auth, db } from "../../server/firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-	const [user, setUser] = useState(null);
-	const [userDetails, setUserDetails] = useState(null);
-	const [loading, setLoading] = useState(true);
+	const location = useLocation();
 	const navigate = useNavigate();
 	const { triggerAlert } = useAlert();
+
+	const [loading, setLoading] = useState(true);
+	const [user, setUser] = useState(null);
+	const [userDetails, setUserDetails] = useState(null);
+
+	const isAdminRoute = location.pathname.startsWith("/gdsc-nubaliwag/admin");
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -28,7 +34,10 @@ export const UserProvider = ({ children }) => {
 						setUserDetails(docSnap.data());
 					} else {
 						setUserDetails({});
-						navigate("/");
+						navigate("/gdsc-nubaliwag/");
+					}
+					if (!isAdminRoute) {
+						navigate("/gdsc-nubaliwag/admin/dashboard");
 					}
 				} catch (error) {
 					setUserDetails({});
@@ -36,7 +45,6 @@ export const UserProvider = ({ children }) => {
 						"danger",
 						error.message || "An error occurred. Please try again."
 					);
-					navigate("/admin/dashboard");
 				}
 			} else {
 				setUser(null);

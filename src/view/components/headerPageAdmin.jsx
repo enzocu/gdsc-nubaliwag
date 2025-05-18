@@ -15,7 +15,7 @@ function HeaderPageAdmin({ Title, handleAdd = null }) {
 							</button>
 						</NavLink>
 
-						<NavLink to="/admin/dashboard/dashboardform?action=edit">
+						<NavLink to="/gdsc-nubaliwag/admin/dashboard/dashboardform?action=edit">
 							<button className="btn btn-outline">
 								<FiEdit className="me-1" />
 								Edit Current A.Y

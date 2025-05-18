@@ -145,7 +145,7 @@ function EventsPage() {
 								</div>
 							</div>
 
-							<NavLink to="/admin/events/eventsform?action=add">
+							<NavLink to="/gdsc-nubaliwag/admin/events/eventsform?action=add">
 								<button className="btn btn-primary form-btn">
 									<MdAdd />
 									<span>Add Event</span>
@@ -159,7 +159,7 @@ function EventsPage() {
 								event.map((ev) => (
 									<NavLink
 										key={ev.id}
-										to={`/admin/events/eventsdetails?id=${ev.id}`}
+										to={`/gdsc-nubaliwag/admin/events/eventsdetails?id=${ev.id}`}
 									>
 										<div className="event-card">
 											<div className="event-photo">

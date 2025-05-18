@@ -87,7 +87,7 @@ export const updateEvent = async (
 			"success",
 			"Event updated successfully! Document ID: " + eventId
 		);
-		navigate("/admin/events/eventsdetails?id=" + eventId);
+		navigate("/gdsc-nubaliwag/admin/events/eventsdetails?id=" + eventId);
 		return true;
 	} catch (error) {
 		triggerAlert("danger", "Error updating event: " + error.message);

@@ -161,6 +161,12 @@ body {
 	color: var(--bg-button-color);
 }
 
+@media (max-width: 705px) {
+	.alert {
+		width: 90%;
+	}
+}
+
 @media (max-width: 575px) {
 	.navbar .navbar-collapse {
 		margin-top: 15px;
