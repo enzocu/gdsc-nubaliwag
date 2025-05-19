@@ -8,20 +8,22 @@ import { LoadingProvider } from "./context/loadingProvider";
 import UserRoutes from "./userPages/userRoutes";
 import { UserProvider } from "../view/context/userContext";
 import ProtectedRoute from "../view/context/protectedRoute";
+import { AcadYearProvider } from "./context/acadyearContext";
 
 function App() {
 	return (
 		<TopAlertProvider>
 			<LoadingProvider>
 				<LoginModal />
-				<HeaderPage />
-				<UserRoutes />
-
-				<UserProvider>
-					<ProtectedRoute>
-						<AdminRoutes />
-					</ProtectedRoute>
-				</UserProvider>
+				<AcadYearProvider>
+					<HeaderPage />
+					<UserRoutes />
+					<UserProvider>
+						<ProtectedRoute>
+							<AdminRoutes />
+						</ProtectedRoute>
+					</UserProvider>
+				</AcadYearProvider>
 			</LoadingProvider>
 		</TopAlertProvider>
 	);

@@ -1,13 +1,44 @@
+import { useState, useEffect } from "react";
 import "../../style/userStyle/eventsprojects.css";
 import event from "../../assets/event.png";
-import { useState } from "react";
+
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 
-function EventsPage() {
-	const [activeTab, setActiveTab] = useState("upcoming");
+import { useLocation } from "react-router-dom";
+import { useAlert } from "../context/alertProvider";
+import { useAcadYear } from "../context/acadyearContext";
+import { useLoading } from "../context/loadingProvider";
 
+import getEvents from "../../controller/firebase/get/getEvents";
+
+function EventsPage() {
+	const location = useLocation();
+	const { acadYear, loading } = useAcadYear();
+	const { triggerAlert } = useAlert();
+	const { setLoading, setPath } = useLoading();
+
+	const [activeTab, setActiveTab] = useState("Upcoming");
+	const [events, setEvent] = useState([]);
+	const [search, setSearch] = useState(null);
+
+	useEffect(() => {
+		if (!loading && acadYear) {
+			setPath(location.pathname);
+
+			getEvents(
+				acadYear.id,
+				activeTab,
+				null,
+				search,
+				setEvent,
+				setLoading,
+				triggerAlert,
+				500
+			);
+		}
+	}, [loading, acadYear, activeTab, search]);
 	return (
 		<>
 			<div className="user-body member">
@@ -25,17 +56,17 @@ function EventsPage() {
 						<div className="gdg-tabs">
 							<button
 								className={`gdg-tab-btn ${
-									activeTab === "upcoming" ? "active" : ""
+									activeTab === "Upcoming" ? "active" : ""
 								}`}
-								onClick={() => setActiveTab("upcoming")}
+								onClick={() => setActiveTab("Upcoming")}
 							>
 								Upcoming Events
 							</button>
 							<button
 								className={`gdg-tab-btn ${
-									activeTab === "past" ? "active" : ""
+									activeTab === "Completed" ? "active" : ""
 								}`}
-								onClick={() => setActiveTab("past")}
+								onClick={() => setActiveTab("Completed")}
 							>
 								Past Events
 							</button>
@@ -45,125 +76,85 @@ function EventsPage() {
 								type="text"
 								placeholder="Search"
 								className="form-control gdg-search-input"
+								value={search || ""}
+								onChange={(e) => setSearch(e.target.value)}
 							/>
 						</div>
 
 						<div className="gdg-grid">
-							<div className="gdg-event-card">
-								<div className="gdg-event-image">
-									<span className="gdg-event-type">Conference</span>
-									<img src={event} alt="" />
-								</div>
-								<div className="gdg-event-content">
-									<h3 className="gdg-event-title">UXplorer</h3>
+							{events.length === 0 ? (
+								<p>No events found.</p>
+							) : (
+								events.map((ev) => (
+									<div className="gdg-event-card" key={ev.id}>
+										<div className="gdg-event-image">
+											<span className="gdg-event-type">
+												{ev.ev_type || "N/A"}
+											</span>
+											<img
+												src={ev.ev_photoURL || "/placeholder.svg"}
+												alt={ev.ev_name || "Event Image"}
+											/>
+										</div>
+										<div className="gdg-event-content">
+											<h3 className="gdg-event-title">
+												{ev.ev_name || "Untitled Event"}
+											</h3>
 
-									<div className="gdg-event-details">
-										<div className="gdg-event-detail">
-											<IoCalendarClearOutline className="gdg-event-icon" />
-											<span>August 30, 2024</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoTimeOutline className="gdg-event-icon" />
-											<span>10:00 AM - 5:00 PM</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoLocationOutline className="gdg-event-icon" />
-											<span>Room 306</span>
+											<div className="gdg-event-details">
+												<div className="gdg-event-detail">
+													<IoCalendarClearOutline className="gdg-event-icon" />
+													<span>
+														{ev.ev_date
+															? new Date(
+																	ev.ev_date.seconds * 1000
+															  ).toLocaleDateString(undefined, {
+																	year: "numeric",
+																	month: "long",
+																	day: "numeric",
+															  })
+															: "Date N/A"}
+													</span>
+												</div>
+												<div className="gdg-event-detail">
+													<IoTimeOutline className="gdg-event-icon" />
+													<span>
+														{ev.ev_starttime && ev.ev_endtime
+															? `${new Date(
+																	ev.ev_starttime.seconds * 1000
+															  ).toLocaleTimeString([], {
+																	hour: "2-digit",
+																	minute: "2-digit",
+															  })} - ${new Date(
+																	ev.ev_endtime.seconds * 1000
+															  ).toLocaleTimeString([], {
+																	hour: "2-digit",
+																	minute: "2-digit",
+															  })}`
+															: "Time N/A"}
+													</span>
+												</div>
+												<div className="gdg-event-detail">
+													<IoLocationOutline className="gdg-event-icon" />
+													<span>{ev.ev_location || "Location N/A"}</span>
+												</div>
+											</div>
+
+											<p className="gdg-event-description">
+												{ev.ev_overview
+													? ev.ev_overview.length > 100
+														? ev.ev_overview.slice(0, 100) + "..."
+														: ev.ev_overview
+													: "No description available."}
+											</p>
+
+											<button className="gdg-view-details-btn">
+												View Details
+											</button>
 										</div>
 									</div>
-									<p className="gdg-event-description">
-										A creative UX workshop to explore modern design trends.
-									</p>
-									<button className="gdg-view-details-btn">View Details</button>
-								</div>
-							</div>
-
-							<div className="gdg-event-card">
-								<div className="gdg-event-image">
-									<span className="gdg-event-type">Conference</span>
-									<img src={event} alt="" />
-								</div>
-								<div className="gdg-event-content">
-									<h3 className="gdg-event-title">UXplorer</h3>
-
-									<div className="gdg-event-details">
-										<div className="gdg-event-detail">
-											<IoCalendarClearOutline className="gdg-event-icon" />
-											<span>August 30, 2024</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoTimeOutline className="gdg-event-icon" />
-											<span>10:00 AM - 5:00 PM</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoLocationOutline className="gdg-event-icon" />
-											<span>Room 306</span>
-										</div>
-									</div>
-									<p className="gdg-event-description">
-										A creative UX workshop to explore modern design trends.
-									</p>
-									<button className="gdg-view-details-btn">View Details</button>
-								</div>
-							</div>
-
-							<div className="gdg-event-card">
-								<div className="gdg-event-image">
-									<span className="gdg-event-type">Conference</span>
-									<img src={event} alt="" />
-								</div>
-								<div className="gdg-event-content">
-									<h3 className="gdg-event-title">UXplorer</h3>
-
-									<div className="gdg-event-details">
-										<div className="gdg-event-detail">
-											<IoCalendarClearOutline className="gdg-event-icon" />
-											<span>August 30, 2024</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoTimeOutline className="gdg-event-icon" />
-											<span>10:00 AM - 5:00 PM</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoLocationOutline className="gdg-event-icon" />
-											<span>Room 306</span>
-										</div>
-									</div>
-									<p className="gdg-event-description">
-										A creative UX workshop to explore modern design trends.
-									</p>
-									<button className="gdg-view-details-btn">View Details</button>
-								</div>
-							</div>
-
-							<div className="gdg-event-card">
-								<div className="gdg-event-image">
-									<span className="gdg-event-type">Conference</span>
-									<img src={event} alt="" />
-								</div>
-								<div className="gdg-event-content">
-									<h3 className="gdg-event-title">UXplorer</h3>
-
-									<div className="gdg-event-details">
-										<div className="gdg-event-detail">
-											<IoCalendarClearOutline className="gdg-event-icon" />
-											<span>August 30, 2024</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoTimeOutline className="gdg-event-icon" />
-											<span>10:00 AM - 5:00 PM</span>
-										</div>
-										<div className="gdg-event-detail">
-											<IoLocationOutline className="gdg-event-icon" />
-											<span>Room 306</span>
-										</div>
-									</div>
-									<p className="gdg-event-description">
-										A creative UX workshop to explore modern design trends.
-									</p>
-									<button className="gdg-view-details-btn">View Details</button>
-								</div>
-							</div>
+								))
+							)}
 						</div>
 					</section>
 				</main>

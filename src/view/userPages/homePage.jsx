@@ -1,69 +1,61 @@
+import { useState, useEffect } from "react";
 import "../../style/userStyle/home.css";
 import photosImg from "../../assets/photos.png";
-import aboutUsImg from "../../assets/aboutUs.png";
-import event from "../../assets/event.png";
-import { useState } from "react";
+import aboutUsImg from "../../assets/iconlogo.png";
+
+import { useLocation } from "react-router-dom";
+import { useAlert } from "../context/alertProvider";
+import { useAcadYear } from "../context/acadyearContext";
+import { useLoading } from "../context/loadingProvider";
+
+import {
+	goToSlide,
+	handleLoadMore,
+	nextSlide,
+	prevSlide,
+} from "../../controller/customAction/homeHandleChange";
+
+import getEvents from "../../controller/firebase/get/getEvents";
+import getPhotos from "../../controller/firebase/get/getPhotos";
 
 function HomePage() {
+	const location = useLocation();
+	const { acadYear, loading } = useAcadYear();
+	const { triggerAlert } = useAlert();
+	const { setLoading, setPath } = useLoading();
+
 	const [viewStyle, setViewStyle] = useState("slideshow");
 	const [currentSlide, setCurrentSlide] = useState(0);
+	const [loadGallery, setLoadGallery] = useState(10);
+	const [events, setEvent] = useState([]);
+	const [photos, setPhoto] = useState([]);
 
-	const photos = [
-		{
-			id: 1,
-			src: photosImg,
-			alt: "UXplorer event with team members",
-			title: "UXplorer 2025",
-			date: "January 1, 2025",
-		},
-		{
-			id: 2,
-			src: photosImg,
-			alt: "Team workshop",
-			title: "Workshop 2025",
-			date: "February 15, 2025",
-		},
-		{
-			id: 3,
-			src: photosImg,
-			alt: "Hackathon event",
-			title: "Hackathon 2025",
-			date: "March 20, 2025",
-		},
-		{
-			id: 4,
-			src: photosImg,
-			alt: "Community meetup",
-			title: "Meetup 2025",
-			date: "April 5, 2025",
-		},
-		{
-			id: 5,
-			src: photosImg,
-			alt: "Tech conference",
-			title: "Conference 2025",
-			date: "May 10, 2025",
-		},
-		{
-			id: 6,
-			src: photosImg,
-			alt: "Coding session",
-			title: "Code Camp 2025",
-			date: "June 15, 2025",
-		},
-	];
+	useEffect(() => {
+		if (!loading && acadYear) {
+			setPath(location.pathname);
 
-	const nextSlide = () => {
-		setCurrentSlide((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
-	};
+			getEvents(
+				acadYear.id,
+				null,
+				null,
+				null,
+				setEvent,
+				setLoading,
+				triggerAlert,
+				5
+			);
 
-	const prevSlide = () => {
-		setCurrentSlide((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
-	};
+			getPhotos(
+				acadYear.id,
+				null,
+				setPhoto,
+				setLoading,
+				triggerAlert,
+				loadGallery
+			);
+		}
+	}, [loading, acadYear, loadGallery]);
 
-	const goToSlide = (index) => {
-		setCurrentSlide(index);
-	};
 	return (
 		<>
 			<div className="user-body">
@@ -86,17 +78,7 @@ function HomePage() {
 						<div className="about-content">
 							<div className="about-text">
 								<h1>About Us</h1>
-								<p>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-									do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-									Ut enim ad minim veniam, quis nostrud exercitation ullamco
-									laboris nisi ut aliquip ex ea commodo consequat.
-								</p>
-								<p>
-									Duis aute irure dolor in reprehenderit in voluptate velit esse
-									cillum dolore eu fugiat nulla pariatur. Excepteur sint
-									occaecat cupidatat non proident, sunt in culpa qui.
-								</p>
+								<p>{acadYear?.ay_about || ""}</p>
 								<button className="meet-members-btn">Meet Our Members</button>
 							</div>
 							<div className="about-logo">
@@ -151,157 +133,175 @@ function HomePage() {
 							</div>
 						</div>
 					</section>
-					<section className="events-section">
-						<div className="events-container">
-							<div className="events-header">
-								<div className="events-title-container">
-									<h2 className="section-title">Featured Events</h2>
-									<p className="events-intro">
-										Join us for our upcoming events and workshops.
-									</p>
-									<button className="view-all-btn">View All Events</button>
-								</div>
-								<div className="events-scroll-container">
-									<div className="events-scroll">
-										<div className="event-card">
-											<div className="event-image uxplorer">
-												<img src={event} alt="" />
-											</div>
-											<div className="event-details">
-												<h3>UXplorer</h3>
-												<p className="event-date">August 30, 2024 • 10:00 AM</p>
-												<p className="event-description">
-													Brief Description of event.
-												</p>
-												<a href="#" className="learn-more-link">
-													Learn More
-												</a>
-											</div>
-										</div>
-										<div className="event-card">
-											<div className="event-image uxplorer">
-												<img src={event} alt="" />
-											</div>
-											<div className="event-details">
-												<h3>UXplorer</h3>
-												<p className="event-date">August 30, 2024 • 10:00 AM</p>
-												<p className="event-description">
-													Brief Description of event.
-												</p>
-												<a href="#" className="learn-more-link">
-													Learn More
-												</a>
-											</div>
-										</div>
-										<div className="event-card">
-											<div className="event-image uxplorer">
-												<img src={event} alt="" />
-											</div>
-											<div className="event-details">
-												<h3>UXplorer</h3>
-												<p className="event-date">August 30, 2024 • 10:00 AM</p>
-												<p className="event-description">
-													Brief Description of event.
-												</p>
-												<a href="#" className="learn-more-link">
-													Learn More
-												</a>
-											</div>
+					{events.length > 0 && (
+						<section className="events-section">
+							<div className="events-container">
+								<div className="events-header">
+									<div className="events-title-container">
+										<h2 className="section-title">Featured Events</h2>
+										<p className="events-intro">
+											Join us for our upcoming events and workshops.
+										</p>
+										<button className="view-all-btn">View All Events</button>
+									</div>
+									<div className="events-scroll-container">
+										<div className="events-scroll">
+											{events.map((event) => (
+												<div key={event.id} className="event-card">
+													<div
+														className={`event-image ${event.cssClass || ""}`}
+													>
+														<img src={event.ev_photoURL} alt={event.ev_name} />
+													</div>
+													<div className="event-details">
+														<h3>{event.ev_name}</h3>
+														<p className="event-date">
+															{new Date(
+																event.ev_date.seconds * 1000
+															).toLocaleDateString(undefined, {
+																year: "numeric",
+																month: "long",
+																day: "numeric",
+															})}
+														</p>
+														<p className="event-description">
+															{event.ev_overview}
+														</p>
+														<a
+															href={event.ev_rsvplink}
+															className="learn-more-link"
+														>
+															Learn More
+														</a>
+													</div>
+												</div>
+											))}
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</section>
-					<section className="photos-section">
-						<h2 className="section-title photos">Chapter Photos</h2>
-						<div className="view-toggle">
-							<button
-								className={`toggle-btn ${
-									viewStyle === "slideshow" ? "active" : ""
-								}`}
-								onClick={() => setViewStyle("slideshow")}
-							>
-								Slide Show Style
-							</button>
-							<button
-								className={`toggle-btn ${
-									viewStyle === "gallery" ? "active" : ""
-								}`}
-								onClick={() => setViewStyle("gallery")}
-							>
-								Gallery Style
-							</button>
-						</div>
+						</section>
+					)}
 
-						{viewStyle === "slideshow" ? (
-							<div className="slideshow-container">
-								<div className="slideshow">
-									<button className="slide-nav prev" onClick={prevSlide}>
-										-
-									</button>
-									<div className="slide">
-										<img
-											src={photos[currentSlide].src || { aboutUsImg }}
-											alt={photos[currentSlide].alt}
-											className="slide-image"
-										/>
-										<div className="slide-caption">
-											<h3>{photos[currentSlide].title}</h3>
-											<p>{photos[currentSlide].date}</p>
-										</div>
-									</div>
-									<button className="slide-nav next" onClick={nextSlide}>
-										-
-									</button>
-								</div>
+					{photos.length > 0 && (
+						<section className="photos-section">
+							<h2 className="section-title photos">Chapter Photos</h2>
+							<div className="view-toggle">
+								<button
+									className={`toggle-btn ${
+										viewStyle === "slideshow" ? "active" : ""
+									}`}
+									onClick={() => setViewStyle("slideshow")}
+								>
+									Slide Show Style
+								</button>
+								<button
+									className={`toggle-btn ${
+										viewStyle === "gallery" ? "active" : ""
+									}`}
+									onClick={() => setViewStyle("gallery")}
+								>
+									Gallery Style
+								</button>
+							</div>
 
-								<div className="slide-indicators">
-									{photos.map((_, index) => (
+							{viewStyle === "slideshow" ? (
+								<div className="slideshow-container">
+									<div className="slideshow">
 										<button
-											key={index}
-											className={`indicator ${
-												currentSlide === index ? "active" : ""
-											}`}
-											onClick={() => goToSlide(index)}
-											aria-label={`Go to slide ${index + 1}`}
-										/>
-									))}
-								</div>
-
-								<div className="thumbnails">
-									{photos.map((photo, index) => (
-										<button
-											key={photo.id}
-											className={`thumbnail ${
-												currentSlide === index ? "active" : ""
-											}`}
-											onClick={() => goToSlide(index)}
+											className="slide-nav prev"
+											onClick={() => prevSlide(setCurrentSlide)}
 										>
-											<img
-												src={photo.src || "../../assets/homeBg.png"}
-												alt={`Thumbnail ${index + 1}`}
-											/>
+											-
 										</button>
-									))}
-								</div>
-							</div>
-						) : (
-							<div className="gallery-container">
-								<div className="photo-grid">
-									{photos.map((photo) => (
-										<div key={photo.id} className="photo-item">
+
+										<div className="slide">
 											<img
-												src={photo.src || "/placeholder.svg"}
-												alt={photo.alt}
+												src={
+													photos[currentSlide]?.ph_photoURL ||
+													"/placeholder.svg"
+												}
+												alt={`Photo from event ${
+													photos[currentSlide]?.ph_evID?.split("/").pop() || ""
+												}`}
+												className="slide-image"
 											/>
+											<div className="slide-caption">
+												<h3>{photos[currentSlide]?.ph_name}</h3>
+												<p>
+													{photos[currentSlide]?.ph_date
+														? new Date(
+																photos[currentSlide]?.ph_date.seconds * 1000
+														  ).toLocaleDateString(undefined, {
+																year: "numeric",
+																month: "short",
+																day: "numeric",
+														  })
+														: "Date N/A"}
+												</p>
+											</div>
 										</div>
-									))}
+
+										<button
+											className="slide-nav next"
+											onClick={() => nextSlide(setCurrentSlide)}
+										>
+											-
+										</button>
+									</div>
+
+									<div className="slide-indicators">
+										{photos.map((_, index) => (
+											<button
+												key={index}
+												className={`indicator ${
+													currentSlide === index ? "active" : ""
+												}`}
+												onClick={() => goToSlide({ setCurrentSlide, index })}
+												aria-label={`Go to slide ${index + 1}`}
+											/>
+										))}
+									</div>
+
+									<div className="thumbnails">
+										{photos.map((photo, index) => (
+											<button
+												key={photo.id}
+												className={`thumbnail ${
+													currentSlide === index ? "active" : ""
+												}`}
+												onClick={() => goToSlide(setCurrentSlide, index)}
+											>
+												<img
+													src={photo.ph_photoURL || "/placeholder.svg"}
+													alt={`Thumbnail ${index + 1}`}
+												/>
+											</button>
+										))}
+									</div>
 								</div>
-								<button className="load-more-btn">LOAD MORE</button>
-							</div>
-						)}
-					</section>
+							) : (
+								<div className="gallery-container">
+									<div className="photo-grid">
+										{photos.map((ph) => (
+											<div key={ph.id} className="photo-item">
+												<img
+													src={ph.ph_photoURL || { photosImg }}
+													alt={`Photo from event ${ph.ph_name || ""}`}
+												/>
+											</div>
+										))}
+									</div>
+									<button
+										className="load-more-btn"
+										onClick={() => handleLoadMore(loadGallery, setLoadGallery)}
+									>
+										{loadGallery === 100 ? "Load Less" : "Load More"}
+									</button>
+								</div>
+							)}
+						</section>
+					)}
 				</main>
 			</div>
 		</>

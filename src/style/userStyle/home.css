@@ -57,6 +57,7 @@
 .about-content {
 	display: flex;
 	gap: 200px;
+	justify-content: space-between;
 }
 
 .about-text {
@@ -96,14 +97,17 @@
 
 img.logo-containers {
 	width: 100%;
-	max-width: 500px;
-	height: auto;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+}
+.about-logo {
+	width: 400px;
+	height: 350px;
+}
+
+.about-logo img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 20px;
 }
 
 /* What We Do Section */
@@ -524,9 +528,9 @@ h2.section-title {
 		gap: 100px;
 	}
 
-	img.logo-containers {
-		width: 100%;
-		max-width: 400px;
+	.about-logo {
+		width: 350px;
+		height: 300px;
 	}
 }
 
@@ -541,9 +545,9 @@ h2.section-title {
 }
 
 @media (max-width: 880px) {
-	img.logo-containers {
-		width: 100%;
-		max-width: 300px;
+	.about-logo {
+		width: 300px;
+		height: 250px;
 	}
 }
 
@@ -558,7 +562,7 @@ h2.section-title {
 		gap: 0px;
 	}
 
-	img.logo-containers {
+	.about-logo {
 		display: none;
 	}
 
