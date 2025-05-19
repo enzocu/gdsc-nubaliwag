@@ -167,6 +167,11 @@ body {
 	font-size: 30px;
 }
 
+footer {
+	flex-shrink: 0;
+	background-color: red;
+}
+
 @media (max-width: 705px) {
 	.alert {
 		width: 90%;
@@ -178,6 +183,7 @@ body {
 		margin-top: 15px;
 	}
 	.navbar .navbar-nav {
-		gap: 5px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
 	}
 }

@@ -128,6 +128,7 @@ function ContactPage() {
 						</div>
 					</section>
 				</main>
+				<footer>12</footer>
 			</div>
 		</>
 	);

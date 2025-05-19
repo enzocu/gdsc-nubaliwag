@@ -18,6 +18,10 @@
 	gap: 15px;
 	cursor: pointer;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	white-space: normal;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	height: fit-content;
 }
 
 .content-page.photos .photos-card:hover {

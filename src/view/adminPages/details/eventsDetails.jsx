@@ -75,7 +75,7 @@ function EventsDetails() {
 					<HeaderFormAdmin Title="Event Details" />
 					<div className="content-details events">
 						<section className="details-image-bannercontainer">
-							<img src={banner} alt="Event Banner" />
+							<img src={event.ev_photoURL || banner} alt="Event Banner" />
 						</section>
 						<section className="details-info-group">
 							<div className="details-about">

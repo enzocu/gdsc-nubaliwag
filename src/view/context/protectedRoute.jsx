@@ -18,6 +18,8 @@ const ProtectedRoute = ({ children }) => {
 		"/gdsc-nubaliwag/user/events",
 		"/gdsc-nubaliwag/user/projects",
 		"/gdsc-nubaliwag/user/contact",
+
+		"/gdsc-nubaliwag/user/events/eventsdetails",
 	];
 
 	if (!user && !loading && !publicPaths.includes(location.pathname)) {

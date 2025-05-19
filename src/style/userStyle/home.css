@@ -76,7 +76,8 @@
 .about-text p {
 	margin-bottom: 20px;
 	color: var(--sec-text-color);
-	font-size: 14px;
+	font-size: 17px;
+	white-space: pre-line;
 }
 
 .meet-members-btn {
@@ -250,6 +251,10 @@ h2.section-title {
 	flex: 0 0 auto;
 	border: 1px solid var(--border-color);
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	white-space: normal;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	height: fit-content;
 }
 
 .events-section .event-card:hover {
@@ -577,7 +582,7 @@ h2.section-title {
 	}
 
 	.events-section .events-title-container h2 {
-		margin-bottom: 0px;
+		margin-bottom: 5px;
 	}
 	.events-section .events-header {
 		flex-direction: column;

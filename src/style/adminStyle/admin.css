@@ -261,13 +261,13 @@
 
 @media (max-width: 1120px) {
 	.admin-body .header-page {
-		padding: 20px 24px;
+		padding: 20px;
 	}
 
 	.admin-body .content-page,
 	.admin-body.form,
 	.admin-body.details {
-		margin: 20px 24px;
+		margin: 20px;
 	}
 }
 
@@ -302,6 +302,14 @@
 	.content-details .form-btn.btn-primary,
 	.content-details .form-btn.btn-outline-primary {
 		flex: 1;
+	}
+
+	.admin-body.form .content-form,
+	.admin-body.details .content-details {
+		margin-top: 20px;
+		padding: 0px;
+		background: none !important;
+		border: none;
 	}
 }
 

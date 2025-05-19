@@ -58,6 +58,10 @@
 	flex: 0 0 auto;
 	border: 1px solid var(--border-color);
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	height: fit-content;
+	white-space: normal;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 .gdg-event-card:hover {
@@ -122,6 +126,7 @@
 	margin-right: 8px;
 	color: var(--sec-text-color);
 	font-size: 17px;
+	flex-shrink: 0;
 }
 
 .gdg-event-description {

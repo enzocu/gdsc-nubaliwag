@@ -54,7 +54,7 @@ function DashboardPage() {
 			);
 			getUsersWithoutRoles(ay_id, 10, setMember, setLoading, triggerAlert);
 		}
-	}, [loading, location.pathname]);
+	}, [loading, user, location.pathname]);
 
 	const handleAdd = () => {
 		if (!loading && user && userDetails) {

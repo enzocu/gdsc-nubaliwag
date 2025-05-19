@@ -233,4 +233,22 @@
 	.content-form.dashboard .form-banner-group {
 		height: 200px;
 	}
+
+	.content-form.dashboard h1 {
+		color: var(--text-color);
+		font-size: 35px;
+		font-weight: bold;
+		margin: 0;
+		padding: 20px 0px 0 0px;
+	}
+
+	.content-form.dashboard .form-section {
+		padding: 20px 0px 50px 0px;
+		flex-direction: column;
+		gap: 15px;
+	}
+
+	.content-form.dashboard .form-group {
+		padding: 0;
+	}
 }

@@ -20,7 +20,7 @@ import { getAcademicYears } from "../../controller/firebase/get/getAcademicYears
 
 function MembersPage() {
 	const location = useLocation();
-
+	const navigate = useNavigate();
 	const { triggerAlert } = useAlert();
 	const { user, userDetails, loading } = useUser();
 	const { setLoading, setPath } = useLoading();
@@ -56,7 +56,6 @@ function MembersPage() {
 		}
 	}, [loading]);
 
-	const navigate = useNavigate();
 	return (
 		<>
 			<div className="admin-body">

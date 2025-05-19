@@ -6,7 +6,7 @@ import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAlert } from "../context/alertProvider";
 import { useAcadYear } from "../context/acadyearContext";
 import { useLoading } from "../context/loadingProvider";
@@ -15,6 +15,7 @@ import getEvents from "../../controller/firebase/get/getEvents";
 
 function EventsPage() {
 	const location = useLocation();
+	const navigate = useNavigate();
 	const { acadYear, loading } = useAcadYear();
 	const { triggerAlert } = useAlert();
 	const { setLoading, setPath } = useLoading();
@@ -143,12 +144,19 @@ function EventsPage() {
 											<p className="gdg-event-description">
 												{ev.ev_overview
 													? ev.ev_overview.length > 100
-														? ev.ev_overview.slice(0, 100) + "..."
+														? ev.ev_overview.slice(0, 30) + "..."
 														: ev.ev_overview
-													: "No description available."}
+													: " "}
 											</p>
 
-											<button className="gdg-view-details-btn">
+											<button
+												className="gdg-view-details-btn"
+												onClick={() =>
+													navigate(
+														`/gdsc-nubaliwag/user/events/eventsdetails?id=${ev.id}`
+													)
+												}
+											>
 												View Details
 											</button>
 										</div>
@@ -158,6 +166,7 @@ function EventsPage() {
 						</div>
 					</section>
 				</main>
+				<footer>12</footer>
 			</div>
 		</>
 	);

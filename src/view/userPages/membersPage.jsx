@@ -319,6 +319,7 @@ function MembersPage() {
 						</div>
 					</section>
 				</main>
+				<footer>12</footer>
 			</div>
 		</>
 	);

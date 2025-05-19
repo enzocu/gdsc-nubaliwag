@@ -4,9 +4,8 @@ import MembersPage from "./membersPage";
 import EventsPage from "./eventsPage";
 import ProjectsPage from "./projectsPage";
 import ContactPage from "./contactPage";
-import DashboardPage from "../adminPages/dashboardPage";
+import EventsDetailsPage from "./details/eventsDetails";
 import "../../style/userStyle/user.css";
-
 function UserRoutes() {
 	return (
 		<Routes>
@@ -15,6 +14,12 @@ function UserRoutes() {
 			<Route path="/gdsc-nubaliwag/user/coreteam" element={<MembersPage />} />
 			<Route path="/gdsc-nubaliwag/user/projects" element={<ProjectsPage />} />
 			<Route path="/gdsc-nubaliwag/user/contact" element={<ContactPage />} />
+
+			{/* Details */}
+			<Route
+				path="/gdsc-nubaliwag/user/events/eventsdetails"
+				element={<EventsDetailsPage />}
+			/>
 		</Routes>
 	);
 }

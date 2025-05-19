@@ -165,13 +165,17 @@ function HomePage() {
 															})}
 														</p>
 														<p className="event-description">
-															{event.ev_overview}
+															{event.ev_overview
+																? event.ev_overview.length > 100
+																	? event.ev_overview.slice(0, 30) + "..."
+																	: event.ev_overview
+																: " "}
 														</p>
 														<a
 															href={event.ev_rsvplink}
 															className="learn-more-link"
 														>
-															Learn More
+															View Details
 														</a>
 													</div>
 												</div>
@@ -292,17 +296,19 @@ function HomePage() {
 											</div>
 										))}
 									</div>
+
 									<button
 										className="load-more-btn"
 										onClick={() => handleLoadMore(loadGallery, setLoadGallery)}
 									>
-										{loadGallery === 100 ? "Load Less" : "Load More"}
+										{loadGallery === 50 ? "Load Less" : "Load More"}
 									</button>
 								</div>
 							)}
 						</section>
 					)}
 				</main>
+				<footer>12</footer>
 			</div>
 		</>
 	);

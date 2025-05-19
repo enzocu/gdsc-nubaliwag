@@ -13,6 +13,9 @@ function HeaderPage() {
 	const { toggleTheme } = useTheme();
 	const isAdminRoute = location.pathname.startsWith("/gdsc-nubaliwag/admin");
 
+	if (location.pathname == "/gdsc-nubaliwag/login") {
+		openModal("loginModal");
+	}
 	return (
 		<nav className="navbar navbar-expand-sm">
 			<div className="container-fluid">
@@ -80,9 +83,6 @@ function HeaderPage() {
 									>
 										Contact
 									</NavLink>
-								</li>
-								<li className="nav-item">
-									<a onClick={() => openModal("loginModal")}>Login</a>
 								</li>
 							</ul>
 						</div>

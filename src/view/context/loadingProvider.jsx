@@ -13,7 +13,11 @@ export const LoadingProvider = ({ children }) => {
 	const [currentPath, setPath] = useState("");
 
 	useEffect(() => {
-		if (currentPath !== location.pathname) {
+		if (
+			!currentPath &&
+			!location.pathname &&
+			currentPath !== location.pathname
+		) {
 			setLoading(false);
 		}
 	}, [location.pathname, currentPath]);
