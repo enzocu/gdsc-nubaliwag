@@ -257,7 +257,7 @@ function HomePage() {
 												className={`indicator ${
 													currentSlide === index ? "active" : ""
 												}`}
-												onClick={() => goToSlide({ setCurrentSlide, index })}
+												onClick={() => goToSlide(setCurrentSlide, index)}
 												aria-label={`Go to slide ${index + 1}`}
 											/>
 										))}
