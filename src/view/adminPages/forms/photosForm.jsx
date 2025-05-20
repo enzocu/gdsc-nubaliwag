@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import "../../../style/adminStyle/photos.css";
+import { VscLinkExternal } from "react-icons/vsc";
 
 import HeaderFormAdmin from "../../../view/components/headerFormAdmin";
+import UrlUpload from "../../components/boostrap/urlModal";
 
 import { useAlert } from "../../context/alertProvider";
 import { useUser } from "../../context/userContext";
 import { useLoading } from "../../context/loadingProvider";
 
 import { handleChange } from "../../../controller/customAction/handleChange";
+import { openModal } from "../../../controller/customAction/showcloseModal";
 
 import { insertPhoto } from "../../../controller/firebase/insert/insertPhoto";
 import { updatePhoto } from "../../../controller/firebase/update/updatePhoto";
@@ -38,6 +41,12 @@ function PhotosForm() {
 	const [btnloading, setBtnloading] = useState(false);
 	const [photos, setPhoto] = useState(defaultPhoto);
 	const [academicYear, setAcademicYear] = useState([]);
+
+	const [url, setUrl] = useState({
+		name: null,
+		state: null,
+		setState: () => {},
+	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -80,6 +89,7 @@ function PhotosForm() {
 
 	return (
 		<div className="admin-body form">
+			<UrlUpload name={url.name} state={url.state} setState={url.setState} />
 			<main>
 				<HeaderFormAdmin Title="Add Photo" />
 				<form className="content-form photos" onSubmit={handleSubmit}>
@@ -132,7 +142,20 @@ function PhotosForm() {
 						</div>
 
 						<div className="form-group form-group-image">
-							<label>Image</label>
+							<label>
+								Image
+								<VscLinkExternal
+									className="upload-url"
+									onClick={() => {
+										openModal("urlModal");
+										setUrl({
+											name: "ph_photoURL",
+											state: null,
+											setState: setPhoto,
+										});
+									}}
+								/>
+							</label>
 							<input
 								type="file"
 								className="form-control"

@@ -26,12 +26,12 @@ function ProjectsPage() {
 						<div className="gdg-search-container">
 							<input
 								type="text"
-								placeholder="Search"
+								placeholder="Search Project"
 								className="form-control gdg-search-input"
 							/>
 						</div>
 
-						<div className="gdg-grid">
+						<div className="gdg-grid project">
 							<div className="gdg-event-card">
 								<div className="gdg-event-image">
 									<span className="gdg-event-type">Conference</span>

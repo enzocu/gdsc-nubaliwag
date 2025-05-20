@@ -154,6 +154,7 @@ const getEventGallery = async (ev_id, setGallery) => {
 		}));
 
 		setGallery(photosData);
+		console.log(photosData);
 	} catch (error) {
 		triggerAlert("danger", `Error fetching photos details:`, error);
 		return null;

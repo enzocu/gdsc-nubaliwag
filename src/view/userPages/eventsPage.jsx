@@ -76,7 +76,7 @@ function EventsPage() {
 						<div className="gdg-search-container">
 							<input
 								type="text"
-								placeholder="Search"
+								placeholder="Search Event"
 								className="form-control gdg-search-input"
 								value={search || ""}
 								onChange={(e) => setSearch(e.target.value)}

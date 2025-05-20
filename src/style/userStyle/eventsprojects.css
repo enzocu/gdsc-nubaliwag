@@ -136,6 +136,10 @@
 	line-height: 1.6;
 }
 
+.gdg-grid.project .gdg-event-description {
+	margin: 0 !important;
+}
+
 /* Details */
 .user-body.eventdetails .event-hero-section {
 	position: relative;
@@ -202,6 +206,9 @@
 .event-content {
 	display: flex;
 	gap: 100px;
+	white-space: normal;
+	overflow-wrap: break-word;
+	word-wrap: break-word;
 }
 
 .event-content .event-left {
@@ -245,7 +252,7 @@
 
 .event-content .event-speakers .speaker-list {
 	flex-direction: column;
-	gap: 15px;
+	gap: 30px;
 }
 
 .event-content .event-organizers .organizer-list .organizer-item,

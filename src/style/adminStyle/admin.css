@@ -214,6 +214,17 @@
 	background-color: var(--bg-button-color);
 }
 
+.upload-url {
+	color: var(--bg-button-color);
+	transition: all 0.3s ease;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+.upload-url:hover {
+	color: var(#0e4885);
+}
+
 .admin-body .content-form .form-field {
 	width: 100%;
 }

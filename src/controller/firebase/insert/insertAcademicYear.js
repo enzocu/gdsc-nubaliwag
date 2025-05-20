@@ -2,6 +2,7 @@ import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { db } from "../../../server/firebaseConfig";
 
 export async function insertAcademicYear(
+	ay_id,
 	us_id,
 	acadyear,
 	setBtnLoading,
@@ -14,6 +15,10 @@ export async function insertAcademicYear(
 			...acadyear,
 			ay_create_timestamp: new Date(),
 			ay_status: "active",
+		});
+
+		await updateDoc(ay_id, {
+			ay_status: "Inactive",
 		});
 
 		const userRef = doc(db, "users", us_id);

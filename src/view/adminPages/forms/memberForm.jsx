@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import "../../../style/adminStyle/members.css";
+import { VscLinkExternal } from "react-icons/vsc";
 
 import HeaderFormAdmin from "../../../view/components/headerFormAdmin";
+import UrlUpload from "../../components/boostrap/urlModal";
 
 import { RxCross2 } from "react-icons/rx";
 
@@ -15,6 +17,7 @@ import { roleChange } from "../../../controller/customAction/roleChange";
 import { updateRole } from "../../../controller/customAction/updateRole";
 import { selectedRole } from "../../../controller/customAction/selectedRole";
 import { toggleStatus } from "../../../controller/customAction/toggleStatus";
+import { openModal } from "../../../controller/customAction/showcloseModal";
 
 import { insertUser } from "../../../controller/firebase/insert/insertUser";
 import { updateUser } from "../../../controller/firebase/update/updateUser";
@@ -54,6 +57,12 @@ function MembersForm() {
 	const [member, setMember] = useState(defaultMember);
 	const [academicYear, setAcademicYear] = useState([]);
 	const [role, setRole] = useState([]);
+
+	const [url, setUrl] = useState({
+		name: null,
+		state: null,
+		setState: () => {},
+	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -106,11 +115,25 @@ function MembersForm() {
 	const goBack = () => navigate(-1);
 	return (
 		<div className="admin-body form">
+			<UrlUpload name={url.name} state={url.state} setState={url.setState} />
 			<main>
 				<HeaderFormAdmin Title="Add Core Member" />
 				<form className="content-form members" onSubmit={handleSubmit}>
 					<section className="form-group form-group-image">
-						<label htmlFor="me_photoURL">Image</label>
+						<label htmlFor="me_photoURL">
+							Image
+							<VscLinkExternal
+								className="upload-url"
+								onClick={() => {
+									openModal("urlModal");
+									setUrl({
+										name: "me_photoURL",
+										state: null,
+										setState: setMember,
+									});
+								}}
+							/>
+						</label>
 						<input
 							type="file"
 							className="form-control"

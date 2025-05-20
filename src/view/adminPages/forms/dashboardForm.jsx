@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import "../../../style/adminStyle/dashboard.css";
+import { VscLinkExternal } from "react-icons/vsc";
 
 import HeaderFormAdmin from "../../../view/components/headerFormAdmin";
+import UrlUpload from "../../components/boostrap/urlModal";
 
 import { useAlert } from "../../context/alertProvider";
 import { useUser } from "../../context/userContext";
 import { useLoading } from "../../context/loadingProvider";
 
 import { handleChange } from "../../../controller/customAction/handleChange";
+import { openModal } from "../../../controller/customAction/showcloseModal";
 
 import { insertAcademicYear } from "../../../controller/firebase/insert/insertAcademicYear";
 import { getAcademicYearDetails } from "../../../controller/firebase/get/getAcademicYearDetails";
@@ -39,12 +42,19 @@ function DashboardForm() {
 	const [btnloading, setBtnloading] = useState(false);
 	const [acadyear, setAcadyear] = useState(defaultDashboard);
 
+	const [url, setUrl] = useState({
+		name: null,
+		state: null,
+		setState: () => {},
+	});
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		if (action == "add") {
 			if (!loading && user && userDetails) {
 				insertAcademicYear(
+					userDetails.us_ayID,
 					userDetails.uid,
 					acadyear,
 					setBtnloading,
@@ -90,6 +100,7 @@ function DashboardForm() {
 
 	return (
 		<div className="admin-body form">
+			<UrlUpload name={url.name} state={url.state} setState={url.setState} />
 			<main>
 				<HeaderFormAdmin Title="Add New Academic Year" />
 				<form className="content-form dashboard" onSubmit={handleSubmit}>
@@ -102,12 +113,21 @@ function DashboardForm() {
 							}
 							alt="Event Banner"
 						/>
-						<button
-							type="button"
-							className="form-btn"
-							onClick={() => bannerImageref.current.click()}
-						>
-							Edit Banner Photo
+						<button type="button" className="form-btn">
+							<span onClick={() => bannerImageref.current.click()}>
+								Edit Banner Photo
+							</span>
+							<VscLinkExternal
+								className="upload-url"
+								onClick={() => {
+									openModal("urlModal");
+									setUrl({
+										name: "ay_bannerURL",
+										state: null,
+										setState: setAcadyear,
+									});
+								}}
+							/>
 							<input
 								type="file"
 								className="form-control"
@@ -134,7 +154,20 @@ function DashboardForm() {
 						</div>
 
 						<div className="form-group-image">
-							<label>Image</label>
+							<label>
+								Image
+								<VscLinkExternal
+									className="upload-url"
+									onClick={() => {
+										openModal("urlModal");
+										setUrl({
+											name: "ay_photoURL",
+											state: null,
+											setState: setAcadyear,
+										});
+									}}
+								/>
+							</label>
 							<input
 								type="file"
 								className="form-control"

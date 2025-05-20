@@ -1,0 +1,81 @@
+/* HEADER */
+.modal-dialog.eventstatus,
+.modal-dialog.url-upload,
+.modal-dialog.profile {
+	display: flex;
+	gap: 30px;
+	background-color: var(--bg-color);
+	width: 500px;
+	border-radius: 10px;
+}
+
+.modal-dialog.profile {
+	width: 600px;
+}
+
+.modal-dialog.eventstatus .modal-content,
+.modal-dialog.url-upload .modal-content,
+.modal-dialog.profile .modal-content {
+	padding: 20px 24px;
+	border-right: 1px solid var(--border-color);
+}
+
+/* PROFILE CORE */
+.modal-dialog.profile .modal-content .modal-body {
+	padding-bottom: 0;
+}
+.modal-dialog.profile .modal-content .core-member {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 50px;
+}
+
+.modal-dialog.profile .modal-content .core-member .core-photo {
+	height: 150px;
+	width: 150px;
+}
+
+.modal-dialog.profile .modal-content .core-member .core-info {
+	text-align: left;
+}
+
+.modal-dialog.profile .modal-content .core-member .core-info .member-position {
+	font-size: 15px !important;
+	color: var(--bg-button-color);
+}
+
+.modal-dialog.profile .modal-content .core-member .core-info .member-position {
+	font-size: 15px !important;
+	color: var(--bg-button-color);
+}
+.modal-dialog.profile .modal-content .core-member .core-info .section-info {
+	margin-bottom: 10px;
+}
+
+.modal-dialog.profile .modal-content .core-member .core-info label {
+	margin-bottom: 0 !important;
+}
+
+/* FOOTER */
+.modal-dialog.eventstatus .modal-footer button,
+.modal-dialog.url-upload .modal-footer button {
+	width: 120px;
+}
+
+@media (max-width: 600px) {
+	.modal-dialog.profile .modal-content .modal-body {
+		display: flex;
+		justify-content: center;
+		margin-top: 15px;
+	}
+	.modal-dialog.profile .modal-content .core-member {
+		flex-direction: column;
+		gap: 20px;
+		align-items: center;
+	}
+
+	.modal-dialog.profile .modal-content .core-member .core-info {
+		text-align: center;
+	}
+}

@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import "../../../style/adminStyle/events.css";
 
 import { RxCross2 } from "react-icons/rx";
+import { VscLinkExternal } from "react-icons/vsc";
 
 import HeaderFormAdmin from "../../../view/components/headerFormAdmin";
 
@@ -17,11 +18,13 @@ import { galleryChange } from "../../../controller/customAction/galleryChange";
 import { toggleStatus } from "../../../controller/customAction/toggleStatus";
 import { selectedSpeaker } from "../../../controller/customAction/selectedSpeaker";
 import { updateSpeaker } from "../../../controller/customAction/updateSpeaker";
+import UrlUpload from "../../components/boostrap/urlModal";
 
 import { insertEvent } from "../../../controller/firebase/insert/insertEvents";
 import { updateEvent } from "../../../controller/firebase/update/updateEvent";
 import { getEventDetails } from "../../../controller/firebase/get/getEventdetails";
 import { getUsersWithoutRoles } from "../../../controller/firebase/get/getUsersWithoutRoles";
+import { openModal } from "../../../controller/customAction/showcloseModal";
 
 const defaultEvent = {
 	ev_name: "",
@@ -61,6 +64,12 @@ function EventsForm() {
 	const [organizer, setOrganizer] = useState([]);
 	const [speaker, setSpeaker] = useState([]);
 	const [gallery, setGallery] = useState([]);
+
+	const [url, setUrl] = useState({
+		name: null,
+		state: null,
+		setState: () => {},
+	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -132,6 +141,7 @@ function EventsForm() {
 	const goBack = () => navigate(-1);
 	return (
 		<div className="admin-body form">
+			<UrlUpload name={url.name} state={url.state} setState={url.setState} />
 			<main>
 				<HeaderFormAdmin Title="Add Event" />
 				<form className="content-form events" onSubmit={handleSubmit}>
@@ -253,7 +263,21 @@ function EventsForm() {
 						</div>
 
 						<div className="form-subgroup form-subgroup-image">
-							<label>Event Image</label>
+							<label>
+								Event Image
+								<VscLinkExternal
+									className="upload-url"
+									onClick={() => {
+										openModal("urlModal");
+										setUrl({
+											name: "ev_photoURL",
+											state: null,
+											setState: setEvent,
+										});
+									}}
+								/>
+							</label>
+
 							<input
 								type="file"
 								className="form-control"
@@ -331,7 +355,20 @@ function EventsForm() {
 										/>
 									</div>
 									<div className="form-field">
-										<label>Speaker Image</label>
+										<label>
+											Speaker Image
+											<VscLinkExternal
+												className="upload-url"
+												onClick={() => {
+													openModal("urlModal");
+													setUrl({
+														name: "ev_spphotoURL",
+														state: null,
+														setState: setEvent,
+													});
+												}}
+											/>
+										</label>
 										<input
 											type="file"
 											className="form-control"
@@ -413,7 +450,20 @@ function EventsForm() {
 						</div>
 
 						<div className="form-subgroup form-subgroup-gallery">
-							<label>Gallery</label>
+							<label>
+								Gallery
+								<VscLinkExternal
+									className="upload-url"
+									onClick={() => {
+										openModal("urlModal");
+										setUrl({
+											name: null,
+											state: galleryChange,
+											setState: setGallery,
+										});
+									}}
+								/>
+							</label>
 							<div className="form-gallery-container-list">
 								<div
 									className="form-image-container"

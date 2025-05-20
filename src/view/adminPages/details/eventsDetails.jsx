@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import "../../../style/adminStyle/events.css";
-import "../../../style/bootstrapStyle/eventstat.css";
 import banner from "../../../assets/banner.png";
 import profileIcon from "../../../assets/profileicon.jpg";
 
@@ -127,7 +126,7 @@ function EventsDetails() {
 													</div>
 													<div className="speakers-info">
 														<h4>{sp.sp_name}</h4>
-														<p>--</p>
+														<p>{sp.sp_info} </p>
 													</div>
 												</li>
 											))}

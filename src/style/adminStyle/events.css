@@ -310,18 +310,29 @@
 	list-style: none;
 }
 
+.content-details.events .speakers-list {
+	flex-direction: column;
+	gap: 30px;
+}
+
 .content-details.events .organizer-item,
 .content-details.events .speakers-item {
 	display: flex;
-	align-items: center;
+	align-items: start;
 	border-radius: 10px;
-	gap: 10px;
+	gap: 15px;
 	flex: 0 0 auto;
 }
 
 .content-details.events .profile-img {
 	width: 45px;
 	height: 45px;
+	flex-shrink: 0;
+}
+
+.content-details.events .speakers-item .profile-img {
+	width: 70px;
+	height: 70px;
 }
 
 .content-details.events .profile-img img {
