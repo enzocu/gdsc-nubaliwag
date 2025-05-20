@@ -165,7 +165,7 @@ function EventsForm() {
 										<option value="Peer-to-Peer session">
 											Peer-to-Peer session
 										</option>
-										<option value="Social networkin">Social networking</option>
+										<option value="Social networking">Social networking</option>
 									</select>
 								</div>
 							</div>

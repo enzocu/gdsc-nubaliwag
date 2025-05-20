@@ -1,8 +1,8 @@
-export const nextSlide = (setCurrentSlide) => {
+export const nextSlide = (photos, setCurrentSlide) => {
 	setCurrentSlide((prev) => (prev === photos.length - 1 ? 0 : prev + 1));
 };
 
-export const prevSlide = (setCurrentSlide) => {
+export const prevSlide = (photos, setCurrentSlide) => {
 	setCurrentSlide((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
 };
 

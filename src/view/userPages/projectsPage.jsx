@@ -5,12 +5,14 @@ import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";
 
+import Footer from "../components/footer";
+
 function ProjectsPage() {
 	const [activeTab, setActiveTab] = useState("upcoming");
 
 	return (
 		<>
-			<div className="user-body member">
+			<div className="user-body project">
 				<main>
 					<section className="header-container">
 						<div className="header-content">
@@ -55,7 +57,6 @@ function ProjectsPage() {
 									<p className="gdg-event-description">
 										A creative UX workshop to explore modern design trends.
 									</p>
-									<button className="gdg-view-details-btn">View Details</button>
 								</div>
 							</div>
 
@@ -84,7 +85,6 @@ function ProjectsPage() {
 									<p className="gdg-event-description">
 										A creative UX workshop to explore modern design trends.
 									</p>
-									<button className="gdg-view-details-btn">View Details</button>
 								</div>
 							</div>
 
@@ -113,7 +113,6 @@ function ProjectsPage() {
 									<p className="gdg-event-description">
 										A creative UX workshop to explore modern design trends.
 									</p>
-									<button className="gdg-view-details-btn">View Details</button>
 								</div>
 							</div>
 
@@ -142,13 +141,12 @@ function ProjectsPage() {
 									<p className="gdg-event-description">
 										A creative UX workshop to explore modern design trends.
 									</p>
-									<button className="gdg-view-details-btn">View Details</button>
 								</div>
 							</div>
 						</div>
 					</section>
 				</main>
-				<footer>12</footer>
+				<Footer />
 			</div>
 		</>
 	);

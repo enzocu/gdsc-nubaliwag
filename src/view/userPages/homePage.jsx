@@ -3,6 +3,9 @@ import "../../style/userStyle/home.css";
 import photosImg from "../../assets/photos.png";
 import aboutUsImg from "../../assets/iconlogo.png";
 
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+
 import { useLocation } from "react-router-dom";
 import { useAlert } from "../context/alertProvider";
 import { useAcadYear } from "../context/acadyearContext";
@@ -13,10 +16,11 @@ import {
 	handleLoadMore,
 	nextSlide,
 	prevSlide,
-} from "../../controller/customAction/homeHandleChange";
+} from "../../controller/customAction/slideHandleChange";
 
 import getEvents from "../../controller/firebase/get/getEvents";
 import getPhotos from "../../controller/firebase/get/getPhotos";
+import Footer from "../components/footer";
 
 function HomePage() {
 	const location = useLocation();
@@ -58,7 +62,7 @@ function HomePage() {
 
 	return (
 		<>
-			<div className="user-body">
+			<div className="user-body home">
 				<main>
 					<section className="hero-section">
 						<div className="hero-content-flex">
@@ -214,9 +218,9 @@ function HomePage() {
 									<div className="slideshow">
 										<button
 											className="slide-nav prev"
-											onClick={() => prevSlide(setCurrentSlide)}
+											onClick={() => prevSlide(photos, setCurrentSlide)}
 										>
-											-
+											<IoIosArrowBack />
 										</button>
 
 										<div className="slide">
@@ -248,9 +252,9 @@ function HomePage() {
 
 										<button
 											className="slide-nav next"
-											onClick={() => nextSlide(setCurrentSlide)}
+											onClick={() => nextSlide(photos, setCurrentSlide)}
 										>
-											-
+											<IoIosArrowForward />
 										</button>
 									</div>
 
@@ -308,7 +312,7 @@ function HomePage() {
 						</section>
 					)}
 				</main>
-				<footer>12</footer>
+				<Footer />
 			</div>
 		</>
 	);

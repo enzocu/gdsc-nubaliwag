@@ -1,5 +1,6 @@
 import "../../style/userStyle/member.css";
 import aboutUsImg from "../../assets/profileicon.jpg";
+import Footer from "../components/footer";
 function MembersPage() {
 	return (
 		<>
@@ -319,7 +320,7 @@ function MembersPage() {
 						</div>
 					</section>
 				</main>
-				<footer>12</footer>
+				<Footer />
 			</div>
 		</>
 	);

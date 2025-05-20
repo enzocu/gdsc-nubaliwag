@@ -169,7 +169,9 @@ body {
 
 footer {
 	flex-shrink: 0;
-	background-color: red;
+	font-size: 12px;
+	color: var(--sec-text-color);
+	padding: 10px 15px;
 }
 
 @media (max-width: 705px) {

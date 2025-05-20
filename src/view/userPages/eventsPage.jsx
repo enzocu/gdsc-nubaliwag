@@ -12,6 +12,7 @@ import { useAcadYear } from "../context/acadyearContext";
 import { useLoading } from "../context/loadingProvider";
 
 import getEvents from "../../controller/firebase/get/getEvents";
+import Footer from "../components/footer";
 
 function EventsPage() {
 	const location = useLocation();
@@ -42,7 +43,7 @@ function EventsPage() {
 	}, [loading, acadYear, activeTab, search]);
 	return (
 		<>
-			<div className="user-body member">
+			<div className="user-body event">
 				<main>
 					<section className="header-container">
 						<div className="header-content">
@@ -84,7 +85,7 @@ function EventsPage() {
 
 						<div className="gdg-grid">
 							{events.length === 0 ? (
-								<p>No events found.</p>
+								<p className="no-records-message">No events found.</p>
 							) : (
 								events.map((ev) => (
 									<div className="gdg-event-card" key={ev.id}>
@@ -166,7 +167,7 @@ function EventsPage() {
 						</div>
 					</section>
 				</main>
-				<footer>12</footer>
+				<Footer />
 			</div>
 		</>
 	);

@@ -3,10 +3,12 @@ import { MdOutlineMailOutline } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
 import "../../style/userStyle/contacts.css";
 
+import Footer from "../components/footer";
+
 function ContactPage() {
 	return (
 		<>
-			<div className="user-body">
+			<div className="user-body contact">
 				<main>
 					<section className="header-container">
 						<div className="header-content">
@@ -128,7 +130,7 @@ function ContactPage() {
 						</div>
 					</section>
 				</main>
-				<footer>12</footer>
+				<Footer />
 			</div>
 		</>
 	);
