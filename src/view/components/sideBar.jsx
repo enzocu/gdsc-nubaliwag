@@ -7,6 +7,8 @@ import { FiSun, FiMoon, FiUser, FiHelpCircle, FiLogOut } from "react-icons/fi";
 import useTheme from "../../controller/customAction/useTheme";
 import { handleLogout } from "../../controller/firebase/handleLogout";
 import { useAlert } from "../context/alertProvider";
+import AccountSettings from "./boostrap/accountModal";
+import { openModal } from "../../controller/customAction/showcloseModal";
 
 function SideBar() {
 	const navigate = useNavigate();
@@ -15,6 +17,7 @@ function SideBar() {
 
 	return (
 		<nav className="sidebar">
+			<AccountSettings />
 			<ul className="side-navigation">
 				<li>
 					<NavLink
@@ -56,7 +59,7 @@ function SideBar() {
 					{theme === "dark" ? "Light" : "Dark"} Mode
 				</li>
 
-				<li href="https" data-bs-toggle="modal" data-bs-target="#profileModal">
+				<li onClick={() => openModal("accountModal")}>
 					<FiUser /> My Account
 				</li>
 

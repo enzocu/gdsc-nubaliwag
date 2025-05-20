@@ -1,6 +1,7 @@
 /* HEADER */
 .modal-dialog.eventstatus,
 .modal-dialog.url-upload,
+.modal-dialog.account,
 .modal-dialog.profile {
 	display: flex;
 	gap: 30px;
@@ -15,6 +16,7 @@
 
 .modal-dialog.eventstatus .modal-content,
 .modal-dialog.url-upload .modal-content,
+.modal-dialog.account .modal-content,
 .modal-dialog.profile .modal-content {
 	padding: 20px 24px;
 	border-right: 1px solid var(--border-color);
@@ -56,10 +58,22 @@
 .modal-dialog.profile .modal-content .core-member .core-info label {
 	margin-bottom: 0 !important;
 }
+/* ACCOUNT */
+.modal-dialog.account .nav .nav-item button {
+	font-size: 14px !important;
+	color: var(--text-color);
+	border-bottom: 1px solid var(--border-color);
+}
+.modal-dialog.account .nav .nav-item button.active {
+	background-color: var(--bg-button-color);
+	color: white;
+	border: none;
+}
 
 /* FOOTER */
 .modal-dialog.eventstatus .modal-footer button,
-.modal-dialog.url-upload .modal-footer button {
+.modal-dialog.url-upload .modal-footer button,
+.modal-dialog.account .modal-footer button {
 	width: 120px;
 }
 

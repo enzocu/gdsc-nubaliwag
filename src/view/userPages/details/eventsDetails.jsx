@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams, useLocation, useNavigate } from "react-router-dom";
+import { useSearchParams, useLocation } from "react-router-dom";
 import photosImg from "../../../assets/banner.png";
 import profileIcon from "../../../assets/profileicon.jpg";
 
@@ -49,7 +49,7 @@ function EventsDetailsPage() {
 	const location = useLocation();
 	const { triggerAlert } = useAlert();
 	const { setLoading, setPath } = useLoading();
-	const navigate = useNavigate();
+
 	const [searchParams] = useSearchParams();
 	const id = searchParams.get("id");
 
@@ -95,7 +95,7 @@ function EventsDetailsPage() {
 							<p className="event-status">{event.ev_status}</p>
 							<button
 								className="btn btn-register"
-								onClick={() => navigate(event.ev_rsvplink)}
+								onClick={() => (window.location.href = event.ev_rsvplink)}
 							>
 								Register Now
 							</button>
