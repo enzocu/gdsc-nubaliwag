@@ -92,13 +92,16 @@ function EventsDetailsPage() {
 
 						<div className="event-title-container">
 							<h1 className="event-title">{event.ev_name}</h1>
-							<p className="event-status">{event.ev_status}</p>
-							<button
-								className="btn btn-register"
-								onClick={() => (window.location.href = event.ev_rsvplink)}
-							>
-								Register Now
-							</button>
+							<p className={"event-" + event.ev_status}>{event.ev_status}</p>
+
+							{event.ev_status == "Upcoming" && (
+								<button
+									className="btn btn-register"
+									onClick={() => (window.location.href = event.ev_rsvplink)}
+								>
+									Register Now
+								</button>
+							)}
 						</div>
 					</section>
 

@@ -40,11 +40,8 @@
 
 .content-page.events .event-status {
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 8px;
-	align-items: center;
-	justify-content: left;
-	overflow: auto;
 	margin: 0 20px 0 20px;
 }
 
@@ -54,6 +51,7 @@
 	border-radius: 50px;
 	display: inline-block;
 	font-size: 12px;
+	white-space: nowrap;
 }
 
 .content-page.events .event-type,
@@ -64,14 +62,14 @@
 
 .content-page.events .event-Completed,
 .content-details.events .event-Completed {
-	background-color: #cbf7d7;
+	background-color: #d2f3db;
 	color: #28aa4b;
 }
 
 .content-page.events .event-Upcoming,
 .content-details.events .event-Upcoming {
-	background-color: #c0d8ff;
-	color: #4387f4;
+	background-color: #6da5ff;
+	color: #0f3169;
 }
 
 .content-page.events .event-Archived,
