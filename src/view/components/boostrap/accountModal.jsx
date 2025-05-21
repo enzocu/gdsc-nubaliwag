@@ -3,15 +3,23 @@ import logo from "../../../assets/navlogo.png";
 import { useAlert } from "../../context/alertProvider";
 import "../../../style/bootstrapStyle/width.css";
 import { closeModal } from "../../../controller/customAction/showcloseModal";
+import { resetUserPassword } from "../../../controller/firebase/update/resetPassword";
+import { updateUserEmail } from "../../../controller/firebase/update/updateEmail";
 
 const AccountSettings = () => {
 	const { triggerAlert } = useAlert();
 	const [activeTab, setActiveTab] = useState("email");
+	const [loading, setLoading] = useState(false);
+	const [newEmail, setNewEmail] = useState("");
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		triggerAlert("Changes saved successfully.", "success");
-		closeModal("accountModal");
+
+		if (activeTab === "email") {
+			await updateUserEmail(newEmail, triggerAlert, setLoading);
+		} else if (activeTab === "password") {
+			await resetUserPassword(triggerAlert, setLoading);
+		}
 	};
 
 	return (
@@ -72,6 +80,8 @@ const AccountSettings = () => {
 										name="us_email"
 										placeholder="@university.edu.ph"
 										required
+										value={newEmail}
+										onChange={(e) => setNewEmail(e.target.value)}
 									/>
 								</div>
 							)}
@@ -86,7 +96,13 @@ const AccountSettings = () => {
 
 						<div className="modal-footer">
 							<button type="submit" className="btn btn-primary">
-								{activeTab == "email" ? "Change" : "Reset"}
+								{loading ? (
+									<span className="spinner-border spinner-border-sm"></span>
+								) : activeTab == "email" ? (
+									"Change"
+								) : (
+									"Reset"
+								)}
 							</button>
 						</div>
 					</form>

@@ -1,7 +1,8 @@
+import logo from "../../assets/navlogo.png";
+
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
-import logo from "../../assets/navlogo.png";
 import { RiFacebookCircleFill } from "react-icons/ri";
 import { LuInstagram } from "react-icons/lu";
 import { FaXTwitter } from "react-icons/fa6";

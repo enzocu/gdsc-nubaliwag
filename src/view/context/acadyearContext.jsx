@@ -3,7 +3,7 @@ import { db } from "../../server/firebaseConfig";
 import { collection, query, where, onSnapshot } from "firebase/firestore";
 
 import Lottie from "lottie-react";
-import loadingAcadYear from "../../assets/authLoading.json";
+import loadingAcadYear from "../../assets/googleLoading.json";
 
 const AcadYearContext = createContext();
 
@@ -40,7 +40,11 @@ export const AcadYearProvider = ({ children }) => {
 		<AcadYearContext.Provider value={{ acadYear, loading }}>
 			{loading ? (
 				<div className="authloading-container">
-					<Lottie animationData={loadingAcadYear} loop={true} />
+					<Lottie
+						animationData={loadingAcadYear}
+						loop={true}
+						className="auth"
+					/>
 				</div>
 			) : (
 				children

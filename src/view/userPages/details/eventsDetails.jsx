@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
+import "../../../style/userStyle/eventsprojects.css";
 import photosImg from "../../../assets/banner.png";
 import profileIcon from "../../../assets/profileicon.jpg";
 
@@ -9,8 +10,6 @@ import { CiCalendarDate } from "react-icons/ci";
 import { MdAccessTime } from "react-icons/md";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-
-import "../../../style/userStyle/eventsprojects.css";
 
 import { useAlert } from "../../context/alertProvider";
 import { useAcadYear } from "../../context/acadyearContext";

@@ -11,6 +11,7 @@ import { BsLightningCharge } from "react-icons/bs";
 import { FaPeopleCarryBox } from "react-icons/fa6";
 
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAlert } from "../context/alertProvider";
 import { useAcadYear } from "../context/acadyearContext";
 import { useLoading } from "../context/loadingProvider";
@@ -28,6 +29,7 @@ import Footer from "../components/footer";
 
 function HomePage() {
 	const location = useLocation();
+	const navigate = useNavigate();
 	const { acadYear, loading } = useAcadYear();
 	const { triggerAlert } = useAlert();
 	const { setLoading, setPath } = useLoading();
@@ -77,17 +79,23 @@ function HomePage() {
 									Empowering students through technology, innovation, and
 									networking at National University - Baliwag
 								</p>
+
 								<button className="learn-more-btn">Learn More</button>
 							</div>
 							<div></div>
 						</div>
 					</section>
-					<section className="about-section">
+					<section className="about-section" id="about">
 						<div className="about-content">
 							<div className="about-text">
 								<h1>About Us</h1>
 								<p>{acadYear?.ay_about || ""}</p>
-								<button className="meet-members-btn">Meet Our Members</button>
+								<button
+									className="meet-members-btn"
+									onClick={() => navigate(`/gdsc-nubaliwag/user/coreteam`)}
+								>
+									Meet Our Members
+								</button>
 							</div>
 							<div className="about-logo">
 								<img
@@ -101,8 +109,8 @@ function HomePage() {
 					<section className="what-we-do-section">
 						<h2 className="section-title">What We Do</h2>
 						<p className="section-description">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-							eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							We empower students through immersive learning experiences,
+							practical skill-building, and a strong tech community.
 						</p>
 
 						<div className="services-grid">
@@ -159,7 +167,12 @@ function HomePage() {
 										<p className="events-intro">
 											Join us for our upcoming events and workshops.
 										</p>
-										<button className="view-all-btn">View All Events</button>
+										<button
+											className="view-all-btn"
+											onClick={() => navigate(`/gdsc-nubaliwag/user/events`)}
+										>
+											View All Events
+										</button>
 									</div>
 									<div className="events-scroll-container">
 										<div className="events-scroll">
@@ -189,7 +202,11 @@ function HomePage() {
 																: " "}
 														</p>
 														<a
-															href={event.ev_rsvplink}
+															onClick={() =>
+																navigate(
+																	`/gdsc-nubaliwag/user/events/eventsdetails?id=${event.id}`
+																)
+															}
 															className="learn-more-link"
 														>
 															View Details

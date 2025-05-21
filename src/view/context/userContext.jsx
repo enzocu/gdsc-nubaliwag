@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import Lottie from "lottie-react";
-import authAnimation from "../../assets/authLoading.json";
+import authAnimation from "../../assets/googleLoading.json";
 import { useAlert } from "./alertProvider";
 
 import { auth, db } from "../../server/firebaseConfig";
@@ -60,7 +60,7 @@ export const UserProvider = ({ children }) => {
 		<UserContext.Provider value={{ user, userDetails, loading }}>
 			{loading ? (
 				<div className="authloading-container">
-					<Lottie animationData={authAnimation} loop={true} />
+					<Lottie animationData={authAnimation} loop={true} className="auth" />
 				</div>
 			) : (
 				children

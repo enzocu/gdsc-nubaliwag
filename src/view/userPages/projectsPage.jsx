@@ -1,6 +1,7 @@
+import { useState } from "react";
 import "../../style/userStyle/eventsprojects.css";
 import project from "../../assets/project.png";
-import { useState } from "react";
+
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoLocationOutline } from "react-icons/io5";

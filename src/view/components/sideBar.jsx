@@ -1,14 +1,17 @@
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
+
 import { IoCalendarClearOutline } from "react-icons/io5";
 import { MdOutlinePeopleAlt, MdOutlineInsertPhoto } from "react-icons/md";
 import { FiSun, FiMoon, FiUser, FiHelpCircle, FiLogOut } from "react-icons/fi";
-import useTheme from "../../controller/customAction/useTheme";
-import { handleLogout } from "../../controller/firebase/handleLogout";
-import { useAlert } from "../context/alertProvider";
+
 import AccountSettings from "./boostrap/accountModal";
+
+import useTheme from "../../controller/customAction/useTheme";
+import { useAlert } from "../context/alertProvider";
 import { openModal } from "../../controller/customAction/showcloseModal";
+import { handleLogout } from "../../controller/firebase/handleLogout";
 
 function SideBar() {
 	const navigate = useNavigate();

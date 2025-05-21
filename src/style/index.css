@@ -123,8 +123,12 @@ body {
 .authloading-container {
 	height: 100%;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.6);
 	z-index: 9999;
+}
+
+.authloading-container .auth {
+	width: 300px;
 }
 
 .navbar {

@@ -1,7 +1,7 @@
+import "../../style/userStyle/contacts.css";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { LuPhone } from "react-icons/lu";
-import "../../style/userStyle/contacts.css";
 
 import Footer from "../components/footer";
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "../../style/adminStyle/members.css";
-import uxplorer from "../../assets/uxplorer.png";
+import profileIcon from "../../assets/profileicon.jpg";
 
 import { MdAdd } from "react-icons/md";
 import { BiSort } from "react-icons/bi";
@@ -137,7 +137,7 @@ function MembersPage() {
 												<td>
 													<div className="profile-pic">
 														<img
-															src={item.us_photoURL || uxplorer}
+															src={item.us_photoURL || profileIcon}
 															alt="Profile"
 														/>
 													</div>

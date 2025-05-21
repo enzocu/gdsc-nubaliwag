@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
 import "../../style/userStyle/member.css";
-import profileIcon from "../../assets/profileicon.jpg";
-import Footer from "../components/footer";
-
 import { useLocation } from "react-router-dom";
+import profileIcon from "../../assets/profileicon.jpg";
+
+import Footer from "../components/footer";
+import UrlUpload from "../components/boostrap/urlModal";
+import ProfileDetails from "../components/boostrap/profileModal";
+
 import { useAlert } from "../context/alertProvider";
 import { useAcadYear } from "../context/acadyearContext";
 import { useLoading } from "../context/loadingProvider";
-import { getUserRoles } from "../../controller/firebase/get/getUserRoles";
-import ProfileDetails from "../components/boostrap/profileModal";
+
 import { openModal } from "../../controller/customAction/showcloseModal";
-import UrlUpload from "../components/boostrap/urlModal";
+import { getUserRoles } from "../../controller/firebase/get/getUserRoles";
 
 function MembersPage() {
 	const location = useLocation();

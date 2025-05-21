@@ -1,11 +1,13 @@
 import { Routes, Route } from "react-router-dom";
+import "../../style/userStyle/user.css";
+
 import HomePage from "./homePage";
 import MembersPage from "./membersPage";
 import EventsPage from "./eventsPage";
 import ProjectsPage from "./projectsPage";
 import ContactPage from "./contactPage";
 import EventsDetailsPage from "./details/eventsDetails";
-import "../../style/userStyle/user.css";
+
 function UserRoutes() {
 	return (
 		<Routes>
