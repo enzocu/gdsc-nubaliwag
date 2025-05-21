@@ -51,7 +51,7 @@ async function getPhotos(
 				ph.ph_name?.toLowerCase().includes(lowerSearch)
 			);
 		}
-		console.log(photos);
+
 		setPhotos(photos);
 		setLoading(false);
 		return photos;

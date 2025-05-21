@@ -92,7 +92,6 @@
 	padding: 5px 10px;
 	border-radius: 4px;
 	font-size: 12px;
-	font-weight: 500;
 	color: var(--text-color);
 }
 
@@ -268,14 +267,14 @@
 }
 .event-content .event-organizers .profile-circle,
 .event-content .event-speakers .profile-circle {
-	width: 45px;
-	height: 45px;
+	width: 60px;
+	height: 60px;
 	flex-shrink: 0;
 }
 
 .event-content .event-speakers .profile-circle {
-	width: 70px;
-	height: 70px;
+	width: 100px;
+	height: 100px;
 }
 
 .profile-circle img {

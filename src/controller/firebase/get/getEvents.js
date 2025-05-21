@@ -41,7 +41,7 @@ async function getEvents(
 		const q = query(
 			eventRef,
 			...conditions,
-			orderBy("ev_create_timestamp", "desc"),
+			orderBy("ev_date", "desc"),
 			limitFn(limit)
 		);
 

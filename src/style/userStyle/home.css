@@ -156,6 +156,14 @@ p.section-description {
 	font-weight: bold;
 }
 
+.service-icon span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
 .tech-workshops {
 	background-color: #4285f4;
 }
@@ -237,10 +245,8 @@ h2.section-title {
 .events-section .events-scroll {
 	display: flex;
 	gap: 20px;
-	overflow-x: scroll;
+	overflow-x: auto;
 	padding: 10px 0;
-	scroll-behavior: smooth;
-	scrollbar-width: thin;
 }
 
 .events-section .event-card {

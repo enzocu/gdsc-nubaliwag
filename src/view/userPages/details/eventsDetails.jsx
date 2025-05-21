@@ -290,13 +290,16 @@ function EventsDetailsPage() {
 											</div>
 										))}
 									</div>
-
-									<button
-										className="load-more-btn"
-										onClick={() => handleLoadMore(loadGallery, setLoadGallery)}
-									>
-										{loadGallery === 50 ? "Load Less" : "Load More"}
-									</button>
+									{loadGallery > 10 && (
+										<button
+											className="load-more-btn"
+											onClick={() =>
+												handleLoadMore(loadGallery, setLoadGallery)
+											}
+										>
+											{loadGallery === 50 ? "Load Less" : "Load More"}
+										</button>
+									)}
 								</div>
 							)}
 						</section>

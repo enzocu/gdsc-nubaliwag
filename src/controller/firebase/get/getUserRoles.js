@@ -64,7 +64,6 @@ export const getUserRoles = async (
 			}
 		});
 
-		console.log("members →", members);
 		setState(members);
 		return members;
 	} catch (error) {

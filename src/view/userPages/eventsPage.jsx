@@ -145,7 +145,7 @@ function EventsPage() {
 											<p className="gdg-event-description">
 												{ev.ev_overview
 													? ev.ev_overview.length > 100
-														? ev.ev_overview.slice(0, 30) + "..."
+														? ev.ev_overview.slice(0, 50) + "..."
 														: ev.ev_overview
 													: " "}
 											</p>

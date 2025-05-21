@@ -1,6 +1,8 @@
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../assets/navlogo.png";
 import { IoIosMenu } from "react-icons/io";
+import { FiSun, FiMoon } from "react-icons/fi";
+
 import {
 	openModal,
 	toggleNavbarCollapse,
@@ -10,7 +12,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 function HeaderPage() {
 	const location = useLocation();
-	const { toggleTheme } = useTheme();
+	const { theme, toggleTheme } = useTheme();
 	const isAdminRoute = location.pathname.startsWith("/gdsc-nubaliwag/admin");
 
 	if (location.pathname == "/gdsc-nubaliwag/login") {
@@ -19,12 +21,7 @@ function HeaderPage() {
 	return (
 		<nav className="navbar navbar-expand-sm">
 			<div className="container-fluid">
-				<img
-					src={logo}
-					alt="GDSC Logo"
-					className="logo-container"
-					onClick={toggleTheme}
-				/>
+				<img src={logo} alt="GDSC Logo" className="logo-container" />
 
 				{/* Hide navbar links on admin routes */}
 				{!isAdminRoute && (
@@ -85,6 +82,9 @@ function HeaderPage() {
 									</NavLink>
 								</li>
 							</ul>
+							<div className="dark-mode" onClick={() => toggleTheme()}>
+								{theme === "dark" ? <FiSun /> : <FiMoon />}
+							</div>
 						</div>
 					</>
 				)}

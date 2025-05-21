@@ -151,7 +151,7 @@
 	margin-bottom: 20px;
 	border-radius: 8px;
 	overflow: hidden;
-	height: 400px;
+	height: 500px;
 }
 
 .slide {
@@ -183,7 +183,7 @@
 }
 
 .slide-caption p {
-	margin: 5px 0 0;
+	margin: 3px 0 0;
 	font-size: 14px;
 	opacity: 0.5;
 }
@@ -349,6 +349,10 @@
 	.user-body main section:not(:first-of-type) {
 		padding-top: 80px;
 	}
+
+	.photo-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (max-width: 650px) {
@@ -377,5 +381,9 @@
 
 	.user-body main section:not(:first-of-type) {
 		padding-bottom: 20px;
+	}
+
+	.photo-grid {
+		grid-template-columns: repeat(1, 1fr);
 	}
 }

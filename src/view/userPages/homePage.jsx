@@ -5,6 +5,10 @@ import aboutUsImg from "../../assets/iconlogo.png";
 
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { IoCodeSlash } from "react-icons/io5";
+import { IoCalendarClearOutline } from "react-icons/io5";
+import { BsLightningCharge } from "react-icons/bs";
+import { FaPeopleCarryBox } from "react-icons/fa6";
 
 import { useLocation } from "react-router-dom";
 import { useAlert } from "../context/alertProvider";
@@ -100,10 +104,13 @@ function HomePage() {
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 							eiusmod tempor incididunt ut labore et dolore magna aliqua.
 						</p>
+
 						<div className="services-grid">
 							<div className="service-card">
 								<div className="service-icon tech-workshops">
-									<span>T</span>
+									<span>
+										<IoCodeSlash />
+									</span>
 								</div>
 								<h3>Technical Workshops</h3>
 								<p>
@@ -113,7 +120,9 @@ function HomePage() {
 							</div>
 							<div className="service-card">
 								<div className="service-icon tech-events">
-									<span>E</span>
+									<span>
+										<IoCalendarClearOutline />
+									</span>
 								</div>
 								<h3>Tech Events</h3>
 								<p>
@@ -123,14 +132,18 @@ function HomePage() {
 							</div>
 							<div className="service-card">
 								<div className="service-icon innovation">
-									<span>I</span>
+									<span>
+										<BsLightningCharge />
+									</span>
 								</div>
 								<h3>Innovation Projects</h3>
 								<p>Collaborative projects using cutting-edge technologies.</p>
 							</div>
 							<div className="service-card">
 								<div className="service-icon community">
-									<span>C</span>
+									<span>
+										<FaPeopleCarryBox />
+									</span>
 								</div>
 								<h3>Community Building</h3>
 								<p>Networking opportunities and resources for students.</p>
@@ -171,7 +184,7 @@ function HomePage() {
 														<p className="event-description">
 															{event.ev_overview
 																? event.ev_overview.length > 100
-																	? event.ev_overview.slice(0, 30) + "..."
+																	? event.ev_overview.slice(0, 50) + "..."
 																	: event.ev_overview
 																: " "}
 														</p>
@@ -300,13 +313,16 @@ function HomePage() {
 											</div>
 										))}
 									</div>
-
-									<button
-										className="load-more-btn"
-										onClick={() => handleLoadMore(loadGallery, setLoadGallery)}
-									>
-										{loadGallery === 50 ? "Load Less" : "Load More"}
-									</button>
+									{loadGallery > 10 && (
+										<button
+											className="load-more-btn"
+											onClick={() =>
+												handleLoadMore(loadGallery, setLoadGallery)
+											}
+										>
+											{loadGallery === 50 ? "Load Less" : "Load More"}
+										</button>
+									)}
 								</div>
 							)}
 						</section>
