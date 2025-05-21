@@ -6,7 +6,7 @@ import { IoCalendarClearOutline } from "react-icons/io5";
 import { MdOutlinePeopleAlt, MdOutlineInsertPhoto } from "react-icons/md";
 import { IoArrowForwardSharp } from "react-icons/io5";
 
-import SideBar from "../components/SideBar";
+import SideBar from "../components/sideBar";
 import HeaderPageAdmin from "../components/headerPageAdmin";
 
 import { useAlert } from "../context/alertProvider";

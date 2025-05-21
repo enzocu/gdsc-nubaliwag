@@ -5,7 +5,7 @@ import uxplorer from "../../assets/uxplorer.png";
 
 import { MdAdd } from "react-icons/md";
 
-import SideBar from "../components/SideBar";
+import SideBar from "../components/sideBar";
 import HeaderPageAdmin from "../components/headerPageAdmin";
 
 import { useUser } from "../context/userContext";

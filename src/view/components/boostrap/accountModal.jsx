@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../../assets/navlogo.png";
 import { useAlert } from "../../context/alertProvider";
 import "../../../style/bootstrapStyle/width.css";
-import { closeModal } from "../../../controller/customAction/showcloseModal";
+
 import { resetUserPassword } from "../../../controller/firebase/update/resetPassword";
 import { updateUserEmail } from "../../../controller/firebase/update/updateEmail";
 

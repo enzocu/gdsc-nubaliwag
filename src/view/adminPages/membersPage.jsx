@@ -6,7 +6,7 @@ import profileIcon from "../../assets/profileicon.jpg";
 import { MdAdd } from "react-icons/md";
 import { BiSort } from "react-icons/bi";
 
-import SideBar from "../../view/components/SideBar";
+import SideBar from "../../view/components/sideBar";
 import HeaderPageAdmin from "../../view/components/headerPageAdmin";
 
 import { useUser } from "../context/userContext";
